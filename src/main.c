@@ -56,12 +56,9 @@
 #include "nrf.h"
 #include "bsp.h"
 #include "UART.h"
-#if defined (UART_PRESENT)
-#include "nrf_uart.h"
-#endif
-#if defined (UARTE_PRESENT)
-#include "nrf_uarte.h"
-#endif
+
+
+
 
 
 /**
@@ -73,6 +70,12 @@ int main(void)
     bsp_board_init(BSP_INIT_LEDS);
     init_uart_nRF_PC();
     
+printf("\n\
+***********************************************************************\r\n\
+************************* APPLICATION STARTED *************************\r\n\
+***********************************************************************\r\n");
+    nrf_delay_ms(20);
+    display_help();
     while(true)
     {
         uart_checker();
