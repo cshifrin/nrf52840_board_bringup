@@ -39,7 +39,7 @@ _build/nrf52840_xxaa/nrf_assert.c.o: \
  /usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/stdio.h \
  /usr/local/gcc-arm-none-eabi-9-2020-q2-update/lib/gcc/arm-none-eabi/9.3.1/include/stdbool.h \
  nrfSDK/components/libraries/util/sdk_errors.h \
- nrfSDK/components/softdevice/s140/headers/nrf_error.h \
+ nrfSDK/components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
  nrfSDK/components/libraries/util/nordic_common.h \
  nrfSDK/components/libraries/util/app_error_weak.h
 
@@ -123,7 +123,7 @@ nrfSDK/components/libraries/util/app_error.h:
 
 nrfSDK/components/libraries/util/sdk_errors.h:
 
-nrfSDK/components/softdevice/s140/headers/nrf_error.h:
+nrfSDK/components/drivers_nrf/nrf_soc_nosd/nrf_error.h:
 
 nrfSDK/components/libraries/util/nordic_common.h:
 

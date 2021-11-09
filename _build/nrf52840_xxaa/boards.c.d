@@ -32,15 +32,8 @@ _build/nrf52840_xxaa/boards.c.o: nrfSDK/components/boards/boards.c \
  nrfSDK/components/libraries/util/app_util.h \
  nrfSDK/modules/nrfx/mdk/compiler_abstraction.h \
  nrfSDK/components/libraries/util/nordic_common.h \
- nrfSDK/components/softdevice/s140/headers/nrf52/nrf_mbr.h \
- nrfSDK/components/softdevice/s140/headers/nrf_svc.h \
  nrfSDK/components/libraries/util/nordic_common.h \
  nrfSDK/components/libraries/util/app_util_platform.h \
- nrfSDK/components/softdevice/s140/headers/nrf_soc.h \
- nrfSDK/components/softdevice/s140/headers/nrf_svc.h \
- nrfSDK/components/softdevice/s140/headers/nrf_error.h \
- nrfSDK/components/softdevice/s140/headers/nrf_error_soc.h \
- nrfSDK/components/softdevice/s140/headers/nrf_nvic.h \
  nrfSDK/components/libraries/util/nrf_assert.h \
  nrfSDK/components/libraries/util/app_error.h \
  /usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/stdio.h \
@@ -60,14 +53,12 @@ _build/nrf52840_xxaa/boards.c.o: nrfSDK/components/boards/boards.c \
  /usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/machine/types.h \
  /usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/stdio.h \
  nrfSDK/components/libraries/util/sdk_errors.h \
- nrfSDK/components/softdevice/s140/headers/nrf_error.h \
+ nrfSDK/components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
  nrfSDK/components/libraries/util/app_error_weak.h \
  nrfSDK/modules/nrfx/soc/nrfx_coredep.h \
  nrfSDK/modules/nrfx/soc/nrfx_atomic.h \
  nrfSDK/components/libraries/util/sdk_errors.h \
  nrfSDK/components/libraries/util/sdk_resources.h \
- nrfSDK/components/softdevice/s140/headers/nrf_sd_def.h \
- nrfSDK/components/softdevice/s140/headers/nrf_soc.h \
  nrfSDK/modules/nrfx/drivers/nrfx_errors.h \
  nrfSDK/components/boards/pca10056.h
 
@@ -145,23 +136,9 @@ nrfSDK/modules/nrfx/mdk/compiler_abstraction.h:
 
 nrfSDK/components/libraries/util/nordic_common.h:
 
-nrfSDK/components/softdevice/s140/headers/nrf52/nrf_mbr.h:
-
-nrfSDK/components/softdevice/s140/headers/nrf_svc.h:
-
 nrfSDK/components/libraries/util/nordic_common.h:
 
 nrfSDK/components/libraries/util/app_util_platform.h:
-
-nrfSDK/components/softdevice/s140/headers/nrf_soc.h:
-
-nrfSDK/components/softdevice/s140/headers/nrf_svc.h:
-
-nrfSDK/components/softdevice/s140/headers/nrf_error.h:
-
-nrfSDK/components/softdevice/s140/headers/nrf_error_soc.h:
-
-nrfSDK/components/softdevice/s140/headers/nrf_nvic.h:
 
 nrfSDK/components/libraries/util/nrf_assert.h:
 
@@ -201,7 +178,7 @@ nrfSDK/components/libraries/util/app_error.h:
 
 nrfSDK/components/libraries/util/sdk_errors.h:
 
-nrfSDK/components/softdevice/s140/headers/nrf_error.h:
+nrfSDK/components/drivers_nrf/nrf_soc_nosd/nrf_error.h:
 
 nrfSDK/components/libraries/util/app_error_weak.h:
 
@@ -212,10 +189,6 @@ nrfSDK/modules/nrfx/soc/nrfx_atomic.h:
 nrfSDK/components/libraries/util/sdk_errors.h:
 
 nrfSDK/components/libraries/util/sdk_resources.h:
-
-nrfSDK/components/softdevice/s140/headers/nrf_sd_def.h:
-
-nrfSDK/components/softdevice/s140/headers/nrf_soc.h:
 
 nrfSDK/modules/nrfx/drivers/nrfx_errors.h:
 

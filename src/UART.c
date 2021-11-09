@@ -1,5 +1,5 @@
 #include "UART.h"
-#include "twi.h"
+//#include "twi.h"
 
 
 /* Error handler for UART initialization. */
@@ -46,7 +46,8 @@ void uart_checker()
     }
     if(cr == 's')
     {
-      twi_scan();
+      printf("\nYou pressed s.\r\n");
+      //twi_scan();
     }
     if(cr == 'c')
     {

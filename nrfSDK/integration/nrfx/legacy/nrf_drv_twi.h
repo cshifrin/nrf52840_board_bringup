@@ -42,8 +42,9 @@
 #define NRF_DRV_TWI_H__
 
 #include <nrfx.h>
-#include <nrfx_twim.h>
-#include <nrfx_twi.h>
+#ifdef TWIM_PRESENT
+    #include <nrfx_twim.h>
+#else
     // Compilers (at least the smart ones) will remove the TWIM related code
     // (blocks starting with "if (NRF_DRV_TWI_USE_TWIM)") when it is not used,
     // but to perform the compilation they need the following definitions.
@@ -56,8 +57,11 @@
     #define nrfx_twim_is_busy(...)              0
     #define nrfx_twim_start_task_get(...)       0
     #define nrfx_twim_stopped_event_get(...)    0
+#endif
 
-
+#ifdef TWI_PRESENT
+    #include <nrfx_twi.h>
+#else
     // Compilers (at least the smart ones) will remove the TWI related code
     // (blocks starting with "if (NRF_DRV_TWI_USE_TWI)") when it is not used,
     // but to perform the compilation they need the following definitions.
@@ -78,6 +82,7 @@
     #define NRF_TWI_FREQ_100K           NRF_TWIM_FREQ_100K
     #define NRF_TWI_FREQ_250K           NRF_TWIM_FREQ_250K
     #define NRF_TWI_FREQ_400K           NRF_TWIM_FREQ_400K
+#endif
 
 #ifdef __cplusplus
 extern "C" {

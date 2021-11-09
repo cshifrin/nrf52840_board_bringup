@@ -84,13 +84,13 @@ extern "C" {
 #define BSP_BUTTON_2   BUTTON_3
 #define BSP_BUTTON_3   BUTTON_4
 
-#define RX_PIN_NUMBER  8
-#define TX_PIN_NUMBER  6
-#define CTS_PIN_NUMBER 7
-#define RTS_PIN_NUMBER 5
-#define HWFC           true
+#define RX_PIN_NUMBER  NRF_GPIO_PIN_MAP(0,26)
+#define TX_PIN_NUMBER  NRF_GPIO_PIN_MAP(0,27)
+#define CTS_PIN_NUMBER 0xffffffff
+#define RTS_PIN_NUMBER 0xffffffff
+#define HWFC           false
 
-#define BSP_QSPI_SCK_PIN   19
+/*#define BSP_QSPI_SCK_PIN   19
 #define BSP_QSPI_CSN_PIN   17
 #define BSP_QSPI_IO0_PIN   20
 #define BSP_QSPI_IO1_PIN   21
@@ -154,7 +154,7 @@ extern "C" {
 #define ARDUINO_A3_PIN              29    // Analog channel 3
 #define ARDUINO_A4_PIN              30    // Analog channel 4
 #define ARDUINO_A5_PIN              31    // Analog channel 5
-
+*/
 
 #ifdef __cplusplus
 }
