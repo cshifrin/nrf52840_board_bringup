@@ -1817,107 +1817,6 @@
 
 // </e>
 
-// <e> TWIS_CONFIG_LOG_ENABLED - Enables logging in the module.
-//==========================================================
-#ifndef TWIS_CONFIG_LOG_ENABLED
-#define TWIS_CONFIG_LOG_ENABLED 0
-#endif
-// <o> TWIS_CONFIG_LOG_LEVEL  - Default Severity level
- 
-// <0=> Off 
-// <1=> Error 
-// <2=> Warning 
-// <3=> Info 
-// <4=> Debug 
-
-#ifndef TWIS_CONFIG_LOG_LEVEL
-#define TWIS_CONFIG_LOG_LEVEL 3
-#endif
-
-// <o> TWIS_CONFIG_INFO_COLOR  - ANSI escape code prefix.
- 
-// <0=> Default 
-// <1=> Black 
-// <2=> Red 
-// <3=> Green 
-// <4=> Yellow 
-// <5=> Blue 
-// <6=> Magenta 
-// <7=> Cyan 
-// <8=> White 
-
-#ifndef TWIS_CONFIG_INFO_COLOR
-#define TWIS_CONFIG_INFO_COLOR 0
-#endif
-
-// <o> TWIS_CONFIG_DEBUG_COLOR  - ANSI escape code prefix.
- 
-// <0=> Default 
-// <1=> Black 
-// <2=> Red 
-// <3=> Green 
-// <4=> Yellow 
-// <5=> Blue 
-// <6=> Magenta 
-// <7=> Cyan 
-// <8=> White 
-
-#ifndef TWIS_CONFIG_DEBUG_COLOR
-#define TWIS_CONFIG_DEBUG_COLOR 0
-#endif
-
-// </e>
-
-// <e> TWI_CONFIG_LOG_ENABLED - Enables logging in the module.
-//==========================================================
-#ifndef TWI_CONFIG_LOG_ENABLED
-#define TWI_CONFIG_LOG_ENABLED 0
-#endif
-// <o> TWI_CONFIG_LOG_LEVEL  - Default Severity level
- 
-// <0=> Off 
-// <1=> Error 
-// <2=> Warning 
-// <3=> Info 
-// <4=> Debug 
-
-#ifndef TWI_CONFIG_LOG_LEVEL
-#define TWI_CONFIG_LOG_LEVEL 3
-#endif
-
-// <o> TWI_CONFIG_INFO_COLOR  - ANSI escape code prefix.
- 
-// <0=> Default 
-// <1=> Black 
-// <2=> Red 
-// <3=> Green 
-// <4=> Yellow 
-// <5=> Blue 
-// <6=> Magenta 
-// <7=> Cyan 
-// <8=> White 
-
-#ifndef TWI_CONFIG_INFO_COLOR
-#define TWI_CONFIG_INFO_COLOR 0
-#endif
-
-// <o> TWI_CONFIG_DEBUG_COLOR  - ANSI escape code prefix.
- 
-// <0=> Default 
-// <1=> Black 
-// <2=> Red 
-// <3=> Green 
-// <4=> Yellow 
-// <5=> Blue 
-// <6=> Magenta 
-// <7=> Cyan 
-// <8=> White 
-
-#ifndef TWI_CONFIG_DEBUG_COLOR
-#define TWI_CONFIG_DEBUG_COLOR 0
-#endif
-
-// </e>
 
 // <e> UART_CONFIG_LOG_ENABLED - Enables logging in the module.
 //==========================================================
@@ -3410,56 +3309,6 @@
 
 // </e>
 
-// <e> NRF_TWI_SENSOR_CONFIG_LOG_ENABLED - Enables logging in the module.
-//==========================================================
-#ifndef NRF_TWI_SENSOR_CONFIG_LOG_ENABLED
-#define NRF_TWI_SENSOR_CONFIG_LOG_ENABLED 0
-#endif
-// <o> NRF_TWI_SENSOR_CONFIG_LOG_LEVEL  - Default Severity level
- 
-// <0=> Off 
-// <1=> Error 
-// <2=> Warning 
-// <3=> Info 
-// <4=> Debug 
-
-#ifndef NRF_TWI_SENSOR_CONFIG_LOG_LEVEL
-#define NRF_TWI_SENSOR_CONFIG_LOG_LEVEL 3
-#endif
-
-// <o> NRF_TWI_SENSOR_CONFIG_INFO_COLOR  - ANSI escape code prefix.
- 
-// <0=> Default 
-// <1=> Black 
-// <2=> Red 
-// <3=> Green 
-// <4=> Yellow 
-// <5=> Blue 
-// <6=> Magenta 
-// <7=> Cyan 
-// <8=> White 
-
-#ifndef NRF_TWI_SENSOR_CONFIG_INFO_COLOR
-#define NRF_TWI_SENSOR_CONFIG_INFO_COLOR 0
-#endif
-
-// <o> NRF_TWI_SENSOR_CONFIG_DEBUG_COLOR  - ANSI escape code prefix.
- 
-// <0=> Default 
-// <1=> Black 
-// <2=> Red 
-// <3=> Green 
-// <4=> Yellow 
-// <5=> Blue 
-// <6=> Magenta 
-// <7=> Cyan 
-// <8=> White 
-
-#ifndef NRF_TWI_SENSOR_CONFIG_DEBUG_COLOR
-#define NRF_TWI_SENSOR_CONFIG_DEBUG_COLOR 0
-#endif
-
-// </e>
 
 // <e> PM_LOG_ENABLED - Enable logging in Peer Manager and its submodules.
 //==========================================================
@@ -3584,9 +3433,19 @@
 #define NRF_LOG_STR_FORMATTER_TIMESTAMP_FORMAT_ENABLED 1
 #endif
 
-// </h> 
-//==========================================================
 
-// <<< end of configuration section >>>
+/********************************************************************************************************************************************************************/
+/*********************************************************************** TWI ****************************************************************************************/
+/********************************************************************************************************************************************************************/
+
+#define TWI_ENABLED         1
+#define NRFX_TWI_ENABLED    1
+#define TWI0_ENABLED        1
+#define TWI0_USE_EASY_DMA   1
+#define TWI_DEFAULT_CONFIG_FREQUENCY 26738688
+
+
+
+
 #endif //SDK_CONFIG_H
 

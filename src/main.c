@@ -56,9 +56,7 @@
 #include "nrf.h"
 #include "bsp.h"
 #include "UART.h"
-
-
-
+#include "twi.h"
 
 
 /**
@@ -69,6 +67,7 @@ int main(void)
     //Initialize peripherals.
     bsp_board_init(BSP_INIT_LEDS);
     init_uart_nRF_PC();
+    init_twi();
     
 printf("\n\
 ***********************************************************************\r\n\

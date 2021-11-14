@@ -64,7 +64,11 @@ _build/nrf52840_xxaa/main.c.o: src/main.c \
  nrfSDK/modules/nrfx/drivers/nrfx_errors.h \
  nrfSDK/components/libraries/bsp/bsp.h nrfSDK/components/boards/boards.h \
  nrfSDK/modules/nrfx/hal/nrf_gpio.h nrfSDK/components/boards/pca10056.h \
- inc/UART.h nrfSDK/modules/nrfx/hal/nrf_uart.h
+ inc/UART.h nrfSDK/modules/nrfx/hal/nrf_uart.h inc/twi.h \
+ nrfSDK/integration/nrfx/legacy/nrf_drv_twi.h \
+ nrfSDK/modules/nrfx/drivers/include/nrfx_twi.h \
+ nrfSDK/modules/nrfx/drivers/include/nrfx_twi_twim.h \
+ nrfSDK/modules/nrfx/hal/nrf_twi.h
 
 /usr/local/gcc-arm-none-eabi-9-2020-q2-update/lib/gcc/arm-none-eabi/9.3.1/include/stdbool.h:
 
@@ -209,3 +213,13 @@ nrfSDK/components/boards/pca10056.h:
 inc/UART.h:
 
 nrfSDK/modules/nrfx/hal/nrf_uart.h:
+
+inc/twi.h:
+
+nrfSDK/integration/nrfx/legacy/nrf_drv_twi.h:
+
+nrfSDK/modules/nrfx/drivers/include/nrfx_twi.h:
+
+nrfSDK/modules/nrfx/drivers/include/nrfx_twi_twim.h:
+
+nrfSDK/modules/nrfx/hal/nrf_twi.h:
