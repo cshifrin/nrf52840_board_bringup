@@ -16,8 +16,6 @@ void init_twi(void)
 
     err_code = nrf_drv_twi_init(&m_twi, &twi_config, NULL, NULL);
     APP_ERROR_CHECK(err_code);
-    nrf_delay_ms(20);
-    printf("Test to see if initialized correctly.\r\n");
     nrf_drv_twi_enable(&m_twi);
 }
 
