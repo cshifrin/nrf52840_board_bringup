@@ -44,3 +44,35 @@ void twi_scan(void)
         printf("No TWI device found.\r\n");
     }
 }
+
+/* Read a specific memory location's data in EEPROM. */
+ret_code_t eeprom_read(uint16_t addr, uint8_t * pdata, size_t size)
+{
+
+}
+
+/* Write to a specific memory location in EEPROM. */
+void eeprom_write(void)
+{
+
+}
+
+/* Memory dump of EEPROM. */
+void eeprom_mem_dump(void); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -68,6 +68,18 @@ void uart_checker()
     {
       //check_ble_mac_addr();
     }
+    if(cr = 'o')
+    {
+      //EEPROM read
+    }
+    if(cr = 'p')
+    {
+      //EEPROM write
+    }
+    if(cr = 'd')
+    {
+      //EEPROM memory dump
+    }
   }
 }
 
@@ -84,10 +96,10 @@ void display_help(void)
   printf("  | v  -  toggle onboard LEDs off      |\r\n");
   printf("  | r  -  reboot the system            |\r\n");
   printf("  | b  -  check BLE MAC address        |\r\n");
-  printf("  | x  -  tbd                          |\r\n");
-  printf("  | x  -  tbd                          |\r\n");
-  printf("  | x  -  tbd                          |\r\n");
-  nrf_delay_ms(20);
+  printf("  | o  -  write       (EEPROM)         |\r\n");
+  printf("  | p  -  read        (EEPROM)         |\r\n");
+  printf("  | d  -  memory dump (EEPROM)         |\r\n");
+  nrf_delay_ms(20); 
   printf("  | x  -  tbd                          |\r\n");
   printf("  | x  -  tbd                          |\r\n");
   printf("  | x  -  tbd                          |\r\n");
