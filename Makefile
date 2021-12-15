@@ -40,7 +40,7 @@ SRC_FILES += \
   $(PROJ_DIR)/src/main.c \
   $(PROJ_DIR)/src/UART.c \
   $(PROJ_DIR)/src/twi.c \
-
+  
 # Include folders common to all targets
 INC_FOLDERS += \
   $(SDK_ROOT)/components \
