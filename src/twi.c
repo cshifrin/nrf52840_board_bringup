@@ -90,6 +90,8 @@ void do_print_data(void)
 {
     size_t addr;
     uint8_t buff[16];
+
+    printf("\n\t\tMEMORY DUMP (EEPROM)\r\n");
     for(addr=0; addr<320; addr+=16)
     {
         unsigned int n;
@@ -98,17 +100,21 @@ void do_print_data(void)
         APP_ERROR_CHECK(err_code);
 
         print_addr(addr);
+        nrf_delay_ms(5);
         for(n=0; n<16; ++n)
         {
             print_hex(buff[n]);
         }
 
-        safe_putc(' '); safe_putc(' ');
+        //safe_putc(' ');
+        //safe_putc(' ');
 
-        for(n=0; n<16; ++n)
-        {
-            safe_putc((char)buff[n]);
-        }
+        //for(n=0; n<16; ++n)
+        //{
+        //    safe_putc((char)buff[n]);
+        //    printf("\r\n");
+        //}
+        printf("\r\n");
         UNUSED_VARIABLE(putc('\n', stdout));
     }
     UNUSED_VARIABLE(fflush(stdout));
