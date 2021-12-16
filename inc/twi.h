@@ -34,8 +34,14 @@ uint16_t tx_buf_eeprom[256];
 uint16_t rx_buf_eeprom[256];
 
 /* Declaring functions. */
-void init_twi(void);                  //Initialize the TWI.
-void twi_scan(void);                  //Scan for connected TWI devices.
+void init_twi(void);                  										// Initialize the TWI.
+void twi_scan(void);                  										// Scan for connected TWI devices.
+ret_code_t eeprom_read(size_t addr, uint8_t * pdata, size_t size);			// Read specific location in EEPROM.
+ret_code_t eeprom_write(size_t addr, uint8_t const * pdata, size_t size);	// Write to specific location in EEPROM.	
+void eeprom_mem_dump(void);													// Perform a memory dump of EEPROM to console.
+void eeprom_print_hex(uint8_t data);										// Print the data value in HEX.
+void eeprom_print_addr(size_t addr);										// Print the address in HEX.
+
 
 #ifdef __cplusplus
 }

@@ -16,7 +16,7 @@
 void uart_error_handler(app_uart_evt_t * p_event);  //Error handler for UART initialization.
 void init_uart_nRF_PC();                            //Initialize the UART between nRF52840 and PC.
 void uart_checker();                                //Scan for input through serial console.
-void display_help();                                //Print a list of serial commands for the user
+void display_help();                                //Print a list of serial commands for the user.
 
 
 

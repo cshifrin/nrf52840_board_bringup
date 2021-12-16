@@ -50,7 +50,7 @@ void twi_scan(void)
 }
 
 /** 
- * Read a specific memory location's data in EEPROM.
+ * Read specific location in EEPROM.
  */
 ret_code_t eeprom_read(size_t addr, uint8_t * pdata, size_t size)
 {
@@ -70,7 +70,7 @@ ret_code_t eeprom_read(size_t addr, uint8_t * pdata, size_t size)
 }
 
 /**
- * Write to a specific memory location in EEPROM.
+ * Write to specific location in EEPROM.
  */
 ret_code_t eeprom_write(size_t addr, uint8_t const * pdata, size_t size)
 {
@@ -132,7 +132,7 @@ void eeprom_print_hex(uint8_t data)
  */
 void eeprom_print_addr(size_t addr)
 {
-    printf("%.2x: ", (unsigned int)addr);
+    printf("%.2X: ", (unsigned int)addr);
 }
 
 

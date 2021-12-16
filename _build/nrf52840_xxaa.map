@@ -4451,9 +4451,9 @@ END GROUP
                 0x0000000020000180        0x8 _build/nrf52840_xxaa/nrf_drv_twi.c.o
  .bss.m_handlers
                 0x0000000020000188        0x8 _build/nrf52840_xxaa/nrf_drv_twi.c.o
- .bss.rx_buf.9527
+ .bss.rx_buf.9541
                 0x0000000020000190      0x100 _build/nrf52840_xxaa/UART.c.o
- .bss.tx_buf.9528
+ .bss.tx_buf.9542
                 0x0000000020000290      0x100 _build/nrf52840_xxaa/UART.c.o
  .bss.__malloc_free_list
                 0x0000000020000390        0x4 /usr/local/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-mallocr.o)
@@ -4661,7 +4661,7 @@ LOAD linker stubs
  .debug_line    0x000000000000d01f      0x9d9 _build/nrf52840_xxaa/UART.c.o
  .debug_line    0x000000000000d9f8      0xbc9 _build/nrf52840_xxaa/twi.c.o
 
-.debug_info     0x0000000000000000    0x1f40a
+.debug_info     0x0000000000000000    0x1f3c0
  .debug_info    0x0000000000000000       0x26 _build/nrf52840_xxaa/gcc_startup_nrf52840.S.o
  .debug_info    0x0000000000000026     0x1811 _build/nrf52840_xxaa/boards.c.o
  .debug_info    0x0000000000001837      0xb94 _build/nrf52840_xxaa/app_error.c.o
@@ -4678,10 +4678,10 @@ LOAD linker stubs
  .debug_info    0x0000000000017bff     0x18e9 _build/nrf52840_xxaa/system_nrf52840.c.o
  .debug_info    0x00000000000194e8     0x1bb2 _build/nrf52840_xxaa/nrf_drv_twi.c.o
  .debug_info    0x000000000001b09a      0xfd3 _build/nrf52840_xxaa/main.c.o
- .debug_info    0x000000000001c06d     0x1877 _build/nrf52840_xxaa/UART.c.o
- .debug_info    0x000000000001d8e4     0x1b26 _build/nrf52840_xxaa/twi.c.o
+ .debug_info    0x000000000001c06d     0x1857 _build/nrf52840_xxaa/UART.c.o
+ .debug_info    0x000000000001d8c4     0x1afc _build/nrf52840_xxaa/twi.c.o
 
-.debug_abbrev   0x0000000000000000     0x40b5
+.debug_abbrev   0x0000000000000000     0x4076
  .debug_abbrev  0x0000000000000000       0x14 _build/nrf52840_xxaa/gcc_startup_nrf52840.S.o
  .debug_abbrev  0x0000000000000014      0x44c _build/nrf52840_xxaa/boards.c.o
  .debug_abbrev  0x0000000000000460      0x276 _build/nrf52840_xxaa/app_error.c.o
@@ -4698,8 +4698,8 @@ LOAD linker stubs
  .debug_abbrev  0x0000000000002cfb      0x334 _build/nrf52840_xxaa/system_nrf52840.c.o
  .debug_abbrev  0x000000000000302f      0x467 _build/nrf52840_xxaa/nrf_drv_twi.c.o
  .debug_abbrev  0x0000000000003496      0x30c _build/nrf52840_xxaa/main.c.o
- .debug_abbrev  0x00000000000037a2      0x44a _build/nrf52840_xxaa/UART.c.o
- .debug_abbrev  0x0000000000003bec      0x4c9 _build/nrf52840_xxaa/twi.c.o
+ .debug_abbrev  0x00000000000037a2      0x425 _build/nrf52840_xxaa/UART.c.o
+ .debug_abbrev  0x0000000000003bc7      0x4af _build/nrf52840_xxaa/twi.c.o
 
 .debug_aranges  0x0000000000000000      0x4b0
  .debug_aranges

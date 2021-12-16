@@ -83,7 +83,7 @@ void uart_checker()
   }
 }
 
-/* Print a list of serial commands for the user */
+/* Print a list of serial commands for the user. */
 void display_help(void)
 {
   printf("  \n--------------------------------------\r\n");
