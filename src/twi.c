@@ -1,6 +1,8 @@
 #include "twi.h"
 
-/* Initialize the TWI. */
+/**
+ * Initialize the TWI.
+ */
 void init_twi(void)
 {
     ret_code_t err_code;
@@ -19,7 +21,9 @@ void init_twi(void)
     nrf_drv_twi_enable(&m_twi);
 }
 
-/* Scan for connected TWI devices. */
+/** 
+ * Scan for connected TWI devices.
+ */
 void twi_scan(void)
 {
     ret_code_t err_code;
@@ -86,7 +90,10 @@ ret_code_t eeprom_write(size_t addr, uint8_t const * pdata, size_t size)
     return ret;
 }
 
-void do_print_data(void)
+/**
+ * Perform a memory dump of EEPROM to console.
+ */
+void eeprom_mem_dump(void)
 {
     size_t addr;
     uint8_t buff[16];
@@ -99,46 +106,36 @@ void do_print_data(void)
         err_code = eeprom_read(addr, buff, 16);
         APP_ERROR_CHECK(err_code);
 
-        print_addr(addr);
+        eeprom_print_addr(addr);
         nrf_delay_ms(5);
         for(n=0; n<16; ++n)
         {
-            print_hex(buff[n]);
+            eeprom_print_hex(buff[n]);
         }
 
-        //safe_putc(' ');
-        //safe_putc(' ');
-
-        //for(n=0; n<16; ++n)
-        //{
-        //    safe_putc((char)buff[n]);
-        //    printf("\r\n");
-        //}
         printf("\r\n");
         UNUSED_VARIABLE(putc('\n', stdout));
     }
     UNUSED_VARIABLE(fflush(stdout));
 }
 
-void print_hex(uint8_t data)
+/**
+ * Print the data value in HEX.
+ */
+void eeprom_print_hex(uint8_t data)
 {
     printf("%.2x ", (unsigned int)data);
 }
 
-void safe_putc(char c)
-{
-    if(!isprint((int)c))
-    {
-        c = '.';
-    }
-    UNUSED_VARIABLE(putc(c, stdout));
-}
-
-
-void print_addr(size_t addr)
+/**
+ * Print the address in HEX.
+ */
+void eeprom_print_addr(size_t addr)
 {
     printf("%.2x: ", (unsigned int)addr);
 }
+
+
 
 
 

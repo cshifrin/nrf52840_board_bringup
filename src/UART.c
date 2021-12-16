@@ -40,45 +40,45 @@ void uart_checker()
 
   if(app_uart_get(&cr) ==  NRF_SUCCESS)
   {
-    if(cr == 'h')
+    if(cr == 'h')       //display help message
     {
       display_help();
     }
-    if(cr == 's')
+    if(cr == 's')       //scan for TWI(I2C) devices
     {
       twi_scan();
     }
-    if(cr == 'c')
+    if(cr == 'c')       //toggle LEDs on
     {
       bsp_board_leds_on();
       printf("\nToggled LEDs on.\r\n");
     }
-    if(cr == 'v')
+    if(cr == 'v')       //toggle LEDs off
     {
       bsp_board_leds_off();
       printf("\nToggled LEDs off.\r\n");
     }
-    if(cr == 'r')
+    if(cr == 'r')       //reset the system
     {
       printf("\nSystem will now reboot.\r\n");
       nrf_delay_ms(100);
       NVIC_SystemReset();
     }
-    if(cr = 'b')
+    if(cr == 'b')       //check BLE MAC address
     {
-      //check_ble_mac_addr();
+      ;
     }
-    if(cr = 'o') //EEPROM read
+    if(cr == 'o')       //EEPROM read
     {
-      
+      ;
     }
-    if(cr = 'p') //EEPROM write
+    if(cr == 'p')       //EEPROM write
     {
-      
+      ;
     }
-    if(cr = 'd') //EEPROM memory dump
+    if(cr == 'd')       //EEPROM memory dump
     {
-      do_print_data();
+      eeprom_mem_dump();
     }
   }
 }
@@ -96,8 +96,8 @@ void display_help(void)
   printf("  | v  -  toggle onboard LEDs off      |\r\n");
   printf("  | r  -  reboot the system            |\r\n");
   printf("  | b  -  check BLE MAC address        |\r\n");
-  printf("  | o  -  write       (EEPROM)         |\r\n");
-  printf("  | p  -  read        (EEPROM)         |\r\n");
+  printf("  | o  -  read        (EEPROM)         |\r\n");
+  printf("  | p  -  write       (EEPROM)         |\r\n");
   printf("  | d  -  memory dump (EEPROM)         |\r\n");
   nrf_delay_ms(20); 
   printf("  | x  -  tbd                          |\r\n");
