@@ -68,17 +68,17 @@ void uart_checker()
     {
       //check_ble_mac_addr();
     }
-    if(cr = 'o')
+    if(cr = 'o') //EEPROM read
     {
-      //EEPROM read
+      
     }
-    if(cr = 'p')
+    if(cr = 'p') //EEPROM write
     {
-      //EEPROM write
+      
     }
-    if(cr = 'd')
+    if(cr = 'd') //EEPROM memory dump
     {
-      //EEPROM memory dump
+      do_print_data();
     }
   }
 }

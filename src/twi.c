@@ -45,20 +45,136 @@ void twi_scan(void)
     }
 }
 
-/* Read a specific memory location's data in EEPROM. */
-ret_code_t eeprom_read(uint16_t addr, uint8_t * pdata, size_t size)
+/** 
+ * Read a specific memory location's data in EEPROM.
+ */
+ret_code_t eeprom_read(size_t addr, uint8_t * pdata, size_t size)
 {
+    ret_code_t ret;
 
+    do
+    {
+       uint8_t addr8 = (uint8_t)addr;
+       ret = nrf_drv_twi_tx(&m_twi, EEPROM_ADDR, &addr8, 1, true);
+       if(NRF_SUCCESS != ret)
+       {
+           break;
+       }
+       ret = nrf_drv_twi_rx(&m_twi, EEPROM_ADDR, pdata, size);
+    }while(0);
+    return ret;
 }
 
-/* Write to a specific memory location in EEPROM. */
-void eeprom_write(void)
+/**
+ * Write to a specific memory location in EEPROM.
+ */
+ret_code_t eeprom_write(size_t addr, uint8_t const * pdata, size_t size)
 {
+    ret_code_t ret;
 
+    do
+    {
+        uint8_t addr8 = (uint8_t)addr;
+        ret = nrf_drv_twi_tx(&m_twi, EEPROM_ADDR, &addr8, 1, true);
+        if(NRF_SUCCESS != ret)
+        {
+            break;
+        }
+        ret = nrf_drv_twi_tx(&m_twi, EEPROM_ADDR, pdata, size, false);
+    }while(0);
+
+    return ret;
 }
 
-/* Memory dump of EEPROM. */
-void eeprom_mem_dump(void); 
+void do_print_data(void)
+{
+    size_t addr;
+    uint8_t buff[16];
+    for(addr=0; addr<320; addr+=16)
+    {
+        unsigned int n;
+        ret_code_t err_code;
+        err_code = eeprom_read(addr, buff, 16);
+        APP_ERROR_CHECK(err_code);
+
+        print_addr(addr);
+        for(n=0; n<16; ++n)
+        {
+            print_hex(buff[n]);
+        }
+
+        safe_putc(' '); safe_putc(' ');
+
+        for(n=0; n<16; ++n)
+        {
+            safe_putc((char)buff[n]);
+        }
+        UNUSED_VARIABLE(putc('\n', stdout));
+    }
+    UNUSED_VARIABLE(fflush(stdout));
+}
+
+void print_hex(uint8_t data)
+{
+    printf("%.2x ", (unsigned int)data);
+}
+
+void safe_putc(char c)
+{
+    if(!isprint((int)c))
+    {
+        c = '.';
+    }
+    UNUSED_VARIABLE(putc(c, stdout));
+}
+
+
+void print_addr(size_t addr)
+{
+    printf("%.2x: ", (unsigned int)addr);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -36,11 +36,6 @@ uint16_t rx_buf_eeprom[256];
 /* Declaring functions. */
 void init_twi(void);                  //Initialize the TWI.
 void twi_scan(void);                  //Scan for connected TWI devices.
-ret_code_t eeprom_read(uint16_t addr, uint8_t * pdata, size_t size);
-void eeprom_write(void);
-void eeprom_mem_dump(void);	
-void eeprom_erase(void);	
-
 
 #ifdef __cplusplus
 }
