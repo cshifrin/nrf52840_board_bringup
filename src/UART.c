@@ -74,7 +74,7 @@ void uart_checker()
     }
     if(cr == 'p')       //EEPROM write
     {
-      ;
+      eeprom_cmd_write();
     }
     if(cr == 'e')       //EEPROM erase all
     {

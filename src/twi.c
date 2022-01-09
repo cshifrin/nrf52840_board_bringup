@@ -233,7 +233,7 @@ void eeprom_cmd_read(void)
     for (uint16_t addr = 0; addr < EEPROM_SIZE; addr += IN_LINE_PRINT_CNT)
     {
         ret_code_t err_code;
-        err_code = eeprom_read(addr, buff, IN_LINE_PRINT_CNT);
+        err_code = eeprom_read2(addr, buff, IN_LINE_PRINT_CNT);
         buff[IN_LINE_PRINT_CNT] = '\0';
         if (NRF_SUCCESS != err_code)
         {
@@ -254,6 +254,29 @@ void eeprom_cmd_read(void)
         printf("%s\n", buff);
         printf("\r\n");
     }
+}
+
+
+void eeprom_cmd_write(void)
+{
+    uint16_t addr = 0;
+    char data[14] = "chris shifrin\0";
+
+    while (1)
+    {
+        ret_code_t err_code;
+        size_t to_write = safe_strlen(data + addr, EEPROM_WRITE_MAX_BYTES);
+        if (0 == to_write)
+            break;
+        err_code = eeprom_write2(addr, (uint8_t const *)data + addr, to_write);
+        if (NRF_SUCCESS != err_code)
+        {
+            printf("ERROR: Communication error.\r\n");
+            return;
+        }
+        addr += to_write;
+    }
+    printf("OK\n");
 }
 
 

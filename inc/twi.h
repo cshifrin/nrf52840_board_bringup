@@ -45,6 +45,7 @@ void eeprom_cmd_clear(void);
 ret_code_t eeprom_read2(uint16_t addr, uint8_t * pdata, size_t size);		
 ret_code_t eeprom_write2(uint16_t addr, uint8_t const * pdata, size_t size);	
 void eeprom_cmd_read(void);	
+void eeprom_cmd_write(void);
 
 
 
