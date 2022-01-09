@@ -220,7 +220,7 @@ void eeprom_cmd_eraseall(void)
             return;
         }
     }
-    printf("Memory erased.\r\n");
+    printf("EEPROM successfully erased.\r\n");
 }
 
 
@@ -253,7 +253,7 @@ void eeprom_cmd_dump(void)
         nrf_delay_ms(5);
         printf("%s", buff);
         
-        if(addr % 64 == 0)
+        if(addr % 128 == 0)
         {
             printf("  (new page)\r\n");
         }
@@ -270,7 +270,7 @@ void eeprom_cmd_dump(void)
 void eeprom_cmd_write(void)
 {
     uint16_t addr = 0;
-    char data[16] = "chris shifrin";
+    char data[15] = "chris fuckerz69";
 
     while (1)
     {
@@ -278,7 +278,7 @@ void eeprom_cmd_write(void)
         size_t to_write = safe_strlen(data + addr, EEPROM_WRITE_MAX_BYTES);
         if (0 == to_write)
             break;
-        err_code = eeprom_write2(addr, (uint8_t const *)data + addr, to_write);
+        err_code = eeprom_write2(addr, (uint8_t const *)data + addr, 15);
         if (NRF_SUCCESS != err_code)
         {
             printf("ERROR: Communication error.\r\n");
