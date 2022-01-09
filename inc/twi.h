@@ -22,7 +22,7 @@ extern "C" {
 #define EEPROM_WRITE_MAX_BYTES		200
 #define EEPROM_READ_MAX_BYTES   	200
 #define EEPROM_ADDR_LEN_BYTES  	    2
-#define EEPROM_SIZE					(320u)
+#define EEPROM_SIZE					(3840u) //(320u)
 #define IN_LINE_PRINT_CNT		    (16u) 
 
 	

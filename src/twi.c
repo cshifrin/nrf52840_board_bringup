@@ -211,9 +211,10 @@ void eeprom_cmd_eraseall(void)
     uint8_t clear_val = 0xff;
     size_t addr;
 
-    for (addr = 0x0101001; addr < EEPROM_SIZE; ++addr)
+    for (addr = 0; addr < EEPROM_SIZE; ++addr)
     {
         err_code = eeprom_write2(addr, &clear_val, 1);
+        nrf_delay_ms(5);
         if (NRF_SUCCESS != err_code)
         {
             printf("TWI Communication Error\r\n");
@@ -231,7 +232,7 @@ void eeprom_cmd_dump(void)
 
     for (uint16_t addr = 0; addr < EEPROM_SIZE; addr += IN_LINE_PRINT_CNT)
     {
-        nrf_delay_ms(5);
+        nrf_delay_ms(2);
         ret_code_t err_code;
         err_code = eeprom_read2(addr, buff, IN_LINE_PRINT_CNT);
         buff[IN_LINE_PRINT_CNT] = '\0';
@@ -270,7 +271,7 @@ void eeprom_cmd_dump(void)
 void eeprom_cmd_write(void)
 {
     uint16_t addr = 0;
-    char data[15] = "chris fuckerz69";
+    char data[13] = "chris shifrin";
 
     while (1)
     {
