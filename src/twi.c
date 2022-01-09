@@ -146,13 +146,13 @@ void eeprom_print_addr(size_t addr)
 ret_code_t eeprom_write2(uint16_t addr, uint8_t const * pdata, size_t size)
 {
     ret_code_t ret;
-    /* Memory device supports only a limited number of bytes written in sequence */
+  
     if (size > EEPROM_WRITE_MAX_BYTES)
     {
         printf("ERROR: Writing too many bytes.\r\n");
         return NRF_ERROR_NOT_FOUND;
     }
-    /* All written data must be in the same page */
+
     if ((addr / (EEPROM_WRITE_MAX_BYTES)) != ((addr + size - 1) / (EEPROM_WRITE_MAX_BYTES)))
     {
         printf("ERROR: Written data must be on same page.\r\n");
@@ -205,33 +205,33 @@ size_t safe_strlen(char const * str, size_t nmax)
 }
 
 
-void eeprom_cmd_clear(void)
+void eeprom_cmd_eraseall(void)
 {
-
+    ret_code_t err_code;
     uint8_t clear_val = 0xff;
     size_t addr;
 
-    for (addr = 0; addr < EEPROM_SIZE; ++addr)
+    for (addr = 0x0101001; addr < EEPROM_SIZE; ++addr)
     {
-        ret_code_t err_code;
-        err_code = eeprom_write(addr, &clear_val, 1);
+        err_code = eeprom_write2(addr, &clear_val, 1);
         if (NRF_SUCCESS != err_code)
         {
             printf("TWI Communication Error\r\n");
             return;
         }
     }
-    printf("Memory Erased\r\n");
+    printf("Memory erased.\r\n");
 }
 
 
-void eeprom_cmd_read(void)
+void eeprom_cmd_dump(void)
 {
     printf("\n\t\t    MEMORY DUMP (EEPROM)\r\n");
     uint8_t buff[IN_LINE_PRINT_CNT + 1];
 
     for (uint16_t addr = 0; addr < EEPROM_SIZE; addr += IN_LINE_PRINT_CNT)
     {
+        nrf_delay_ms(5);
         ret_code_t err_code;
         err_code = eeprom_read2(addr, buff, IN_LINE_PRINT_CNT);
         buff[IN_LINE_PRINT_CNT] = '\0';
@@ -241,7 +241,7 @@ void eeprom_cmd_read(void)
             return;
         }
 
-        printf("%.3x: ", addr);
+        printf("%.3X: ", addr);
         for (uint8_t i = 0; i < IN_LINE_PRINT_CNT; i++)
         {
             printf("%.2x ", buff[i]);
@@ -251,7 +251,17 @@ void eeprom_cmd_read(void)
             }
         }
         nrf_delay_ms(5);
-        printf("%s\n", buff);
+        printf("%s", buff);
+        
+        if(addr % 128 == 0)
+        {
+            printf("  (new page)\r\n");
+        }
+        else
+        {
+            printf("\n");
+        }
+
         printf("\r\n");
     }
 }
@@ -260,7 +270,7 @@ void eeprom_cmd_read(void)
 void eeprom_cmd_write(void)
 {
     uint16_t addr = 0;
-    char data[14] = "chris shifrin\0";
+    char data[16] = "chris shifrin";
 
     while (1)
     {
@@ -276,7 +286,7 @@ void eeprom_cmd_write(void)
         }
         addr += to_write;
     }
-    printf("OK\n");
+    printf("EEPROM write successful.\r\n");
 }
 
 

@@ -41,10 +41,10 @@ ret_code_t eeprom_write(size_t addr, uint8_t const * pdata, size_t size);		// Wr
 void eeprom_mem_dump(void);														// Perform a memory dump of EEPROM to console.
 void eeprom_print_hex(uint8_t data);											// Print the data value in HEX.
 void eeprom_print_addr(size_t addr);											// Print the address in HEX.
-void eeprom_cmd_clear(void);
+void eeprom_cmd_eraseall(void);
 ret_code_t eeprom_read2(uint16_t addr, uint8_t * pdata, size_t size);		
 ret_code_t eeprom_write2(uint16_t addr, uint8_t const * pdata, size_t size);	
-void eeprom_cmd_read(void);	
+void eeprom_cmd_dump(void);	
 void eeprom_cmd_write(void);
 
 
