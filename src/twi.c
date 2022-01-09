@@ -253,7 +253,7 @@ void eeprom_cmd_dump(void)
         nrf_delay_ms(5);
         printf("%s", buff);
         
-        if(addr % 128 == 0)
+        if(addr % 64 == 0)
         {
             printf("  (new page)\r\n");
         }
