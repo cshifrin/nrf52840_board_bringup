@@ -235,7 +235,7 @@ void eeprom_cmd_read(void)
 {
     ret_code_t err_code;
     uint16_t addr = 0;
-    uint8_t buff[IN_LINE_PRINT_CNT + 1];
+    uint8_t buff[IN_LINE_PRINT_CNT];
 
     err_code = eeprom_read(addr, buff, IN_LINE_PRINT_CNT);
     if (NRF_SUCCESS != err_code)
@@ -244,7 +244,7 @@ void eeprom_cmd_read(void)
             return;
         }
 
-    printf("0x%.2X: ", addr);
+    printf("\n0x%.2X: ", addr);
     for (uint8_t i = 0; i < IN_LINE_PRINT_CNT; i++)
     {
         printf("%.2x ", buff[i]);
@@ -253,8 +253,12 @@ void eeprom_cmd_read(void)
             buff[i] = '.';
         }
     }
-    nrf_delay_ms(5);
-    printf("%s\r\n", buff);
+
+    for(uint8_t x = 0; x < IN_LINE_PRINT_CNT; x++)
+    {
+        printf("%c", buff[x]);
+    }
+    printf("\r\n");
 }
 
 
