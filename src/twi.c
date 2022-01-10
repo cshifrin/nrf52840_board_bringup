@@ -51,99 +51,11 @@ void twi_scan(void)
     }
 }
 
-/** 
- * Read specific location in EEPROM.
- */
-ret_code_t eeprom_read(size_t addr, uint8_t * pdata, size_t size)
-{
-    ret_code_t ret;
-
-    do
-    {
-       uint8_t addr8 = (uint8_t)addr;
-       ret = nrf_drv_twi_tx(&m_twi, EEPROM_ADDR, &addr8, 1, true);
-       if(NRF_SUCCESS != ret)
-       {
-           break;
-       }
-       ret = nrf_drv_twi_rx(&m_twi, EEPROM_ADDR, pdata, size);
-    }while(0);
-    return ret;
-}
 
 /**
- * Write to specific location in EEPROM.
+ * Write to EEPROM using TWI.
  */
-ret_code_t eeprom_write(size_t addr, uint8_t const * pdata, size_t size)
-{
-    ret_code_t ret;
-
-    do
-    {
-        uint8_t addr8 = (uint8_t)addr;
-        ret = nrf_drv_twi_tx(&m_twi, EEPROM_ADDR, &addr8, 1, true);
-        if(NRF_SUCCESS != ret)
-        {
-            nrf_delay_ms(5);
-            printf("about to break \r\n");
-            break;
-        }
-        ret = nrf_drv_twi_tx(&m_twi, EEPROM_ADDR, pdata, size, false);
-    }while(0);
-
-    return ret;
-}
-
-/**
- * Perform a memory dump of EEPROM to console.
- */
-void eeprom_mem_dump(void)
-{
-    size_t addr;
-    uint8_t buff[16];
-
-    printf("\n\t\tMEMORY DUMP (EEPROM)\r\n");
-    for(addr=0; addr<320; addr+=16)
-    {
-        unsigned int n;
-        ret_code_t err_code;
-        err_code = eeprom_read(addr, buff, 16);
-        APP_ERROR_CHECK(err_code);
-
-        eeprom_print_addr(addr);
-        nrf_delay_ms(5);
-        for(n=0; n<16; ++n)
-        {
-            eeprom_print_hex(buff[n]);
-        }
-
-        printf("\r\n");
-        UNUSED_VARIABLE(putc('\n', stdout));
-    }
-    UNUSED_VARIABLE(fflush(stdout));
-}
-
-/**
- * Print the data value in HEX.
- */
-void eeprom_print_hex(uint8_t data)
-{
-    printf("%.2x ", (unsigned int)data);
-}
-
-/**
- * Print the address in HEX.
- */
-void eeprom_print_addr(size_t addr)
-{
-    printf("%.2X: ", (unsigned int)addr);
-}
-
-
-
-//-------------------------------------------------------------------------------------------------------------------------------------
-
-ret_code_t eeprom_write2(uint16_t addr, uint8_t const * pdata, size_t size)
+ret_code_t eeprom_write(uint16_t addr, uint8_t const * pdata, size_t size)
 {
     ret_code_t ret;
   
@@ -170,7 +82,10 @@ ret_code_t eeprom_write2(uint16_t addr, uint8_t const * pdata, size_t size)
 }
 
 
-ret_code_t eeprom_read2(uint16_t addr, uint8_t * pdata, size_t size)
+/**
+ * Read from EEPROM using TWI.
+ */
+ret_code_t eeprom_read(uint16_t addr, uint8_t * pdata, size_t size)
 {
     ret_code_t ret;
     if (size > EEPROM_SIZE)
@@ -192,6 +107,24 @@ ret_code_t eeprom_read2(uint16_t addr, uint8_t * pdata, size_t size)
 }
 
 
+/**
+ * Print the data value in HEX.
+ */
+void eeprom_print_hex(uint8_t data)
+{
+    printf("%.2x ", (unsigned int)data);
+}
+
+/**
+ * Print the address in HEX.
+ */
+void eeprom_print_addr(size_t addr)
+{
+    printf("%.2X: ", (unsigned int)addr);
+}
+
+
+
 size_t safe_strlen(char const * str, size_t nmax)
 {
     size_t n=0;
@@ -205,15 +138,16 @@ size_t safe_strlen(char const * str, size_t nmax)
 }
 
 
-void eeprom_cmd_eraseall(void)
+void eeprom_eraseall(void)
 {
     ret_code_t err_code;
     uint8_t clear_val = 0xff;
     size_t addr;
+    printf("Erasing EEPROM...\r\n");
 
     for (addr = 0; addr < EEPROM_SIZE; ++addr)
     {
-        err_code = eeprom_write2(addr, &clear_val, 1);
+        err_code = eeprom_write(addr, &clear_val, 1);
         nrf_delay_ms(5);
         if (NRF_SUCCESS != err_code)
         {
@@ -225,24 +159,25 @@ void eeprom_cmd_eraseall(void)
 }
 
 
-void eeprom_cmd_dump(void)
+void eeprom_dump(void)
 {
     printf("\n\t\t    MEMORY DUMP (EEPROM)\r\n");
     uint8_t buff[IN_LINE_PRINT_CNT + 1];
 
-    for (uint16_t addr = 0; addr < EEPROM_SIZE; addr += IN_LINE_PRINT_CNT)
+    // loop only observes the first 320 bytes in EEPROM to save time
+    for (uint16_t addr = 0; addr < 32; addr++)
     {
         nrf_delay_ms(2);
         ret_code_t err_code;
-        err_code = eeprom_read2(addr, buff, IN_LINE_PRINT_CNT);
+        err_code = eeprom_read(addr, buff, IN_LINE_PRINT_CNT);
         buff[IN_LINE_PRINT_CNT] = '\0';
         if (NRF_SUCCESS != err_code)
         {
-            printf("Error: EEPROM transmission error detected.\n");
+            printf("Error: EEPROM transmission error detected.\r\n");
             return;
         }
 
-        printf("%.3X: ", addr);
+        printf("0x%.2X: ", addr);
         for (uint8_t i = 0; i < IN_LINE_PRINT_CNT; i++)
         {
             printf("%.2x ", buff[i]);
@@ -267,19 +202,21 @@ void eeprom_cmd_dump(void)
     }
 }
 
-
+/**
+ * Set value in EEPROM.
+ */
 void eeprom_cmd_write(void)
 {
     uint16_t addr = 0;
-    char data[13] = "chris shifrin";
+    char data[16] = "christopherhenry";
 
-    while (1)
+    while(1)
     {
         ret_code_t err_code;
         size_t to_write = safe_strlen(data + addr, EEPROM_WRITE_MAX_BYTES);
         if (0 == to_write)
             break;
-        err_code = eeprom_write2(addr, (uint8_t const *)data + addr, 15);
+        err_code = eeprom_write(addr, (uint8_t const *)data + addr, 16);
         if (NRF_SUCCESS != err_code)
         {
             printf("ERROR: Communication error.\r\n");
@@ -288,6 +225,25 @@ void eeprom_cmd_write(void)
         addr += to_write;
     }
     printf("EEPROM write successful.\r\n");
+}
+
+/**
+ * Get value in EEPROM.
+ */
+void eeprom_cmd_read(void)
+{
+    ret_code_t err_code;
+    uint16_t addr = 0;
+    uint8_t buff[IN_LINE_PRINT_CNT + 1];
+
+    err_code = eeprom_read(addr, buff, IN_LINE_PRINT_CNT);
+    if (NRF_SUCCESS != err_code)
+        {
+            printf("Error: EEPROM transmission error detected.\r\n");
+            return;
+        }
+    
+
 }
 
 

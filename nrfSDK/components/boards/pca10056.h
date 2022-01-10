@@ -49,7 +49,7 @@ extern "C" {
 // LEDs definitions for PCA10056
 #define LEDS_NUMBER    4
 
-#define LED_1          NRF_GPIO_PIN_MAP(0,13)
+#define LED_1          NRF_GPIO_PIN_MAP(0,13) 
 #define LED_2          NRF_GPIO_PIN_MAP(0,14)
 #define LED_3          NRF_GPIO_PIN_MAP(0,15)
 #define LED_4          NRF_GPIO_PIN_MAP(0,16)

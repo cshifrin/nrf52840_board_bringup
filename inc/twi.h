@@ -22,7 +22,7 @@ extern "C" {
 #define EEPROM_WRITE_MAX_BYTES		200
 #define EEPROM_READ_MAX_BYTES   	200
 #define EEPROM_ADDR_LEN_BYTES  	    2
-#define EEPROM_SIZE					(3840u) //(320u)
+#define EEPROM_SIZE					(32768u)
 #define IN_LINE_PRINT_CNT		    (16u) 
 
 	
@@ -36,16 +36,14 @@ uint16_t rx_buf_eeprom[256];
 /* Declaring functions. */
 void init_twi(void);                  											// Initialize the TWI.
 void twi_scan(void);                  											// Scan for connected TWI devices.
-ret_code_t eeprom_read(size_t addr, uint8_t * pdata, size_t size);				// Read specific location in EEPROM.
-ret_code_t eeprom_write(size_t addr, uint8_t const * pdata, size_t size);		// Write to specific location in EEPROM.	
-void eeprom_mem_dump(void);														// Perform a memory dump of EEPROM to console.
+ret_code_t eeprom_read(uint16_t addr, uint8_t * pdata, size_t size);			// Read specific location in EEPROM.
+ret_code_t eeprom_write(uint16_t addr, uint8_t const * pdata, size_t size);		// Write to specific location in EEPROM.	
+void eeprom_dump(void);															// Dumps first 320 bytes of EEPROM.
+void eeprom_eraseall(void);														// Erase EEPROM completely.
 void eeprom_print_hex(uint8_t data);											// Print the data value in HEX.
 void eeprom_print_addr(size_t addr);											// Print the address in HEX.
-void eeprom_cmd_eraseall(void);
-ret_code_t eeprom_read2(uint16_t addr, uint8_t * pdata, size_t size);		
-ret_code_t eeprom_write2(uint16_t addr, uint8_t const * pdata, size_t size);	
-void eeprom_cmd_dump(void);	
-void eeprom_cmd_write(void);
+void eeprom_cmd_write(void);													// Set values in EEPROM.
+void eeprom_cmd_read(void);													// Get vallues in EEPROM.
 
 
 

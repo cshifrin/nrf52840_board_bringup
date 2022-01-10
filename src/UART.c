@@ -70,7 +70,7 @@ void uart_checker()
     }
     if(cr == 'o')       //EEPROM read
     {
-      ;
+      eeprom_cmd_read();
     }
     if(cr == 'p')       //EEPROM write
     {
@@ -78,11 +78,11 @@ void uart_checker()
     }
     if(cr == 'e')       //EEPROM erase all
     {
-      eeprom_cmd_eraseall();
+      eeprom_eraseall();
     }
     if(cr == 'd')       //EEPROM memory dump
     {
-      eeprom_cmd_dump();
+      eeprom_dump();
     }
   }
 }
