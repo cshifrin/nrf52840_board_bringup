@@ -16,6 +16,8 @@ _build/nrf52840_xxaa/twi.c.o: src/twi.c \
  /usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/cdefs.h \
  /usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/string.h \
  /usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/ctype.h \
+ /usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/stdlib.h \
+ /usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/machine/stdlib.h \
  inc/twi.h \
  /usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/stdio.h \
  /usr/local/gcc-arm-none-eabi-9-2020-q2-update/lib/gcc/arm-none-eabi/9.3.1/include/stdarg.h \
@@ -105,6 +107,10 @@ _build/nrf52840_xxaa/twi.c.o: src/twi.c \
 /usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/string.h:
 
 /usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/ctype.h:
+
+/usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/stdlib.h:
+
+/usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/machine/stdlib.h:
 
 inc/twi.h:
 

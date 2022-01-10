@@ -1,5 +1,6 @@
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
 #include "twi.h"
 
 /**
@@ -189,14 +190,14 @@ void eeprom_dump(void)
         nrf_delay_ms(5);
         printf("%s", buff);
         
-        if(addr % 64 == 0)
+        /*if(addr % 64 == 0)
         {
             printf("  (new page)\r\n");
         }
         else
         {
             printf("\n");
-        }
+        }*/
 
         printf("\r\n");
     }
@@ -216,7 +217,7 @@ void eeprom_cmd_write(void)
         size_t to_write = safe_strlen(data + addr, EEPROM_WRITE_MAX_BYTES);
         if (0 == to_write)
             break;
-        err_code = eeprom_write(addr, (uint8_t const *)data + addr, 16);
+        err_code = eeprom_write(addr, (uint8_t const *)data, 16);
         if (NRF_SUCCESS != err_code)
         {
             printf("ERROR: Communication error.\r\n");
@@ -242,13 +243,19 @@ void eeprom_cmd_read(void)
             printf("Error: EEPROM transmission error detected.\r\n");
             return;
         }
-    
 
+    printf("0x%.2X: ", addr);
+    for (uint8_t i = 0; i < IN_LINE_PRINT_CNT; i++)
+    {
+        printf("%.2x ", buff[i]);
+        if (!isprint((int)buff[i]))
+        {
+            buff[i] = '.';
+        }
+    }
+    nrf_delay_ms(5);
+    printf("%s\r\n", buff);
 }
-
-
-
-
 
 
 
