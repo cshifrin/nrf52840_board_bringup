@@ -82,19 +82,15 @@ printf("\n\
       uint8_t cmd[16] = {'\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0'};
       uint8_t i = 0;
 
-      while(app_uart_get(&cr) ==  NRF_SUCCESS)
+      while(app_uart_get(&cr) ==  NRF_SUCCESS) //scan for user input
       {
         cmd[i] = cr;
         i++;
         nrf_delay_ms(5);
       }
-        if(cmd[0] == 'h' && cmd[1] == 'e')       //display help message
+        if(cmd[0] == 'h' && cmd[1] == 'e' && cmd[2] == 'l' && cmd[3] == 'p')       //display help message
         {
           display_help();
-          nrf_delay_ms(10);
-
-          for(int j = 0; j < 16; j++)
-            cmd[j] = '\0';
           continue;
         }
         if(cr == 's')       //scan for TWI(I2C) devices

@@ -33,60 +33,6 @@ void init_uart_nRF_PC()
     APP_ERROR_CHECK(err_code);
 }
 
-/* Scan for input through serial console. */
-void uart_checker()
-{
-  uint8_t cr;
-
-  if(app_uart_get(&cr) ==  NRF_SUCCESS)
-  {
-    if(cr == 'h')       //display help message
-    {
-      display_help();
-    }
-    if(cr == 's')       //scan for TWI(I2C) devices
-    {
-      twi_scan();
-    }
-    if(cr == 'c')       //toggle LEDs on
-    {
-      bsp_board_leds_on();
-      printf("\nToggled LEDs on.\r\n");
-    }
-    if(cr == 'v')       //toggle LEDs off
-    {
-      bsp_board_leds_off();
-      printf("\nToggled LEDs off.\r\n");
-    }
-    if(cr == 'r')       //reset the system
-    {
-      printf("\nSystem will now reboot.\r\n");
-      nrf_delay_ms(100);
-      NVIC_SystemReset();
-    }
-    if(cr == 'b')       //check BLE MAC address
-    {
-      ;
-    }
-    if(cr == 'o')       //EEPROM read
-    {
-      eeprom_cmd_read();
-    }
-    if(cr == 'p')       //EEPROM write
-    {
-      eeprom_cmd_write();
-    }
-    if(cr == 'e')       //EEPROM erase all
-    {
-      eeprom_eraseall();
-    }
-    if(cr == 'd')       //EEPROM memory dump
-    {
-      eeprom_dump();
-    }
-  }
-}
-
 /* Print a list of serial commands for the user. */
 void display_help(void)
 {
@@ -111,7 +57,6 @@ void display_help(void)
   printf("  | x  -  tbd                          |\r\n");
   printf("  --------------------------------------\r\n");
 }
-
 
 
 
