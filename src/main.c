@@ -86,53 +86,61 @@ printf("\n\
       {
         cmd[i] = cr;
         i++;
-        nrf_delay_ms(5);
+        nrf_delay_ms(1);
       }
-        if(cmd[0] == 'h' && cmd[1] == 'e' && cmd[2] == 'l' && cmd[3] == 'p')       //display help message
-        {
-          display_help();
-          continue;
-        }
-        if(cr == 's')       //scan for TWI(I2C) devices
-        {
-          twi_scan();
-        }
-        if(cr == 'c')       //toggle LEDs on
-        {
-          bsp_board_leds_on();
-          printf("\nToggled LEDs on.\r\n");
-        }
-        if(cr == 'v')       //toggle LEDs off
-        {
-          bsp_board_leds_off();
-          printf("\nToggled LEDs off.\r\n");
-        }
-        if(cr == 'r')       //reset the system
-        {
-          printf("\nSystem will now reboot.\r\n");
-          nrf_delay_ms(100);
-          NVIC_SystemReset();
-        }
-        if(cr == 'b')       //check BLE MAC address
-        {
-          ;
-        }
-        if(cr == 'o')       //EEPROM read
-        {
-          eeprom_cmd_read();
-        }
-        if(cr == 'x')       //EEPROM write
-        {
-          eeprom_cmd_write();
-        }
-        if(cr == 'z')       //EEPROM erase all
-        {
-          eeprom_eraseall();
-        }
-        if(cr == 'd')       //EEPROM memory dump
-        {
-          eeprom_dump();
-        }
+
+      if(cmd[0] == 'h' && cmd[1] == 'e' && cmd[2] == 'l' && cmd[3] == 'p')       //display help message
+      {
+        display_help();
+        continue;
+      }
+      if(cmd[0] == 's' && cmd[1] == 'c' && cmd[2] == 'a' && cmd[3] == 'n')       //scan for TWI(I2C) devices
+      {
+        twi_scan();
+        continue;
+      }
+      if(cmd[0] == 'l' && cmd[1] == 'e' && cmd[2] == 'd' && cmd[3] == ' ' && cmd[4] == 'o' && cmd[5] == 'n')       //toggle LEDs on
+      {
+        bsp_board_leds_on();
+        printf("\nToggled LEDs on.\r\n");
+        continue;
+      }
+      if(cmd[0] == 'l' && cmd[1] == 'e' && cmd[2] == 'd' && cmd[3] == ' ' && cmd[4] == 'o' && cmd[5] == 'f' && cmd[6] == 'f')       //toggle LEDs off
+      {
+        bsp_board_leds_off();
+        printf("\nToggled LEDs off.\r\n");
+        continue;
+      }
+      if(cr == 'r')       //reset the system
+      {
+        printf("\nSystem will now reboot.\r\n");
+        nrf_delay_ms(100);
+        NVIC_SystemReset();
+      }
+      if(cr == 'b')       //check BLE MAC address
+      {
+        continue;
+      }
+      if(cr == 'o')       //EEPROM read
+      {
+        eeprom_cmd_read();
+        continue;
+      }
+      if(cr == 'x')       //EEPROM write
+      {
+        eeprom_cmd_write();
+        continue;
+      }
+      if(cr == 'z')       //EEPROM erase all
+      {
+        eeprom_eraseall();
+        continue;
+      }
+      if(cr == 'd')       //EEPROM memory dump
+      {
+        eeprom_dump();
+        continue;
+      }
     }//while(true)
 }
 
