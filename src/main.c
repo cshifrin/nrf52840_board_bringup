@@ -88,60 +88,78 @@ printf("\n\
         i++;
         nrf_delay_ms(1);
       }
-
-      if(cmd[0] == 'h' && cmd[1] == 'e' && cmd[2] == 'l' && cmd[3] == 'p')       //display help message
+      //display help message
+      if(cmd[0] == 'h' && cmd[1] == 'e' && cmd[2] == 'l' && cmd[3] == 'p')                                                                
       {
         display_help();
         continue;
       }
-      if(cmd[0] == 's' && cmd[1] == 'c' && cmd[2] == 'a' && cmd[3] == 'n')       //scan for TWI(I2C) devices
+
+      //scan for TWI(I2C) devices
+      else if(cmd[0] == 's' && cmd[1] == 'c' && cmd[2] == 'a' && cmd[3] == 'n')                                                          
       {
         twi_scan();
         continue;
       }
-      if(cmd[0] == 'l' && cmd[1] == 'e' && cmd[2] == 'd' && cmd[3] == ' ' && cmd[4] == 'o' && cmd[5] == 'n')       //toggle LEDs on
+
+      //toggle LEDs on
+      else if(cmd[0] == 'l' && cmd[1] == 'e' && cmd[2] == 'd' && cmd[3] == ' ' && cmd[4] == 'o' && cmd[5] == 'n')                        
       {
         bsp_board_leds_on();
         printf("\nToggled LEDs on.\r\n");
         continue;
       }
-      if(cmd[0] == 'l' && cmd[1] == 'e' && cmd[2] == 'd' && cmd[3] == ' ' && cmd[4] == 'o' && cmd[5] == 'f' && cmd[6] == 'f')       //toggle LEDs off
+
+      //toggle LEDs off
+      else if(cmd[0] == 'l' && cmd[1] == 'e' && cmd[2] == 'd' && cmd[3] == ' ' && cmd[4] == 'o' && cmd[5] == 'f' && cmd[6] == 'f')       
       {
         bsp_board_leds_off();
         printf("\nToggled LEDs off.\r\n");
         continue;
       }
-      if(cr == 'r')       //reset the system
+
+      //reset the system
+      else if(cmd[0] == 'r' && cmd[1] == 'e' && cmd[2] == 'b' && cmd[3] == 'o' && cmd[4] == 'o' && cmd[5] == 't')                        
       {
         printf("\nSystem will now reboot.\r\n");
         nrf_delay_ms(100);
         NVIC_SystemReset();
       }
-      if(cr == 'b')       //check BLE MAC address
+
+      //check BLE MAC address
+      else if(cmd[0] == 'b' && cmd[1] == 'l' && cmd[2] == 'e' && cmd[3] == ' ' && cmd[4] == 'm' && cmd[5] == 'a' && cmd[6] == 'c')       
       {
         continue;
       }
-      if(cr == 'o')       //EEPROM read
+
+      //EEPROM read
+      else if(cmd[0] == 'e' && cmd[1] == 'e' && cmd[2] == 'p' && cmd[3] == 'r' && cmd[4] == 'o' && cmd[5] == 'm' && cmd[6] == ' ' && cmd[7] == 'r' && cmd[8] == 'e' && cmd[9] == 'a' && cmd[10] == 'd')       
       {
         eeprom_cmd_read();
         continue;
       }
-      if(cr == 'x')       //EEPROM write
+
+      //EEPROM write
+      else if(cmd[0] == 'e' && cmd[1] == 'e' && cmd[2] == 'p' && cmd[3] == 'r' && cmd[4] == 'o' && cmd[5] == 'm' && cmd[6] == ' ' && cmd[7] == 'w' && cmd[8] == 'r' && cmd[9] == 'i' && cmd[10] == 't' && cmd[11] == 'e')       
       {
         eeprom_cmd_write();
         continue;
       }
-      if(cr == 'z')       //EEPROM erase all
+
+      //EEPROM erase all
+      else if(cmd[0] == 'e' && cmd[1] == 'e' && cmd[2] == 'p' && cmd[3] == 'r' && cmd[4] == 'o' && cmd[5] == 'm' && cmd[6] == ' ' && cmd[7] == 'e' && cmd[8] == 'r' && cmd[9] == 'a' && cmd[10] == 's' && cmd[11] == 'e')       
       {
         eeprom_eraseall();
         continue;
       }
-      if(cr == 'd')       //EEPROM memory dump
+
+      //EEPROM memory dump
+      if(cmd[0] == 'e' && cmd[1] == 'e' && cmd[2] == 'p' && cmd[3] == 'r' && cmd[4] == 'o' && cmd[5] == 'm' && cmd[6] == ' ' && cmd[7] == 'd' && cmd[8] == 'u' && cmd[9] == 'm' && cmd[10] == 'p')       
       {
         eeprom_dump();
         continue;
       }
-    }//while(true)
+    } // while(true)
 }
 
 
