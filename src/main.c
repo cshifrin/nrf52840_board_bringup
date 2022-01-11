@@ -82,12 +82,14 @@ printf("\n\
       uint8_t cmd[16] = {'\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0'};
       uint8_t i = 0;
 
-      while(app_uart_get(&cr) ==  NRF_SUCCESS) //scan for user input
+      //scan for user input
+      while(app_uart_get(&cr) ==  NRF_SUCCESS) 
       {
         cmd[i] = cr;
         i++;
         nrf_delay_ms(1);
       }
+
       //display help message
       if(cmd[0] == 'h' && cmd[1] == 'e' && cmd[2] == 'l' && cmd[3] == 'p')                                                                
       {
@@ -96,14 +98,14 @@ printf("\n\
       }
 
       //scan for TWI(I2C) devices
-      else if(cmd[0] == 's' && cmd[1] == 'c' && cmd[2] == 'a' && cmd[3] == 'n')                                                          
+      if(cmd[0] == 's' && cmd[1] == 'c' && cmd[2] == 'a' && cmd[3] == 'n')                                                          
       {
         twi_scan();
         continue;
       }
 
       //toggle LEDs on
-      else if(cmd[0] == 'l' && cmd[1] == 'e' && cmd[2] == 'd' && cmd[3] == ' ' && cmd[4] == 'o' && cmd[5] == 'n')                        
+      if(cmd[0] == 'l' && cmd[1] == 'e' && cmd[2] == 'd' && cmd[3] == ' ' && cmd[4] == 'o' && cmd[5] == 'n')                        
       {
         bsp_board_leds_on();
         printf("\nToggled LEDs on.\r\n");
@@ -111,7 +113,7 @@ printf("\n\
       }
 
       //toggle LEDs off
-      else if(cmd[0] == 'l' && cmd[1] == 'e' && cmd[2] == 'd' && cmd[3] == ' ' && cmd[4] == 'o' && cmd[5] == 'f' && cmd[6] == 'f')       
+      if(cmd[0] == 'l' && cmd[1] == 'e' && cmd[2] == 'd' && cmd[3] == ' ' && cmd[4] == 'o' && cmd[5] == 'f' && cmd[6] == 'f')       
       {
         bsp_board_leds_off();
         printf("\nToggled LEDs off.\r\n");
@@ -119,7 +121,7 @@ printf("\n\
       }
 
       //reset the system
-      else if(cmd[0] == 'r' && cmd[1] == 'e' && cmd[2] == 'b' && cmd[3] == 'o' && cmd[4] == 'o' && cmd[5] == 't')                        
+      if(cmd[0] == 'r' && cmd[1] == 'e' && cmd[2] == 'b' && cmd[3] == 'o' && cmd[4] == 'o' && cmd[5] == 't')                        
       {
         printf("\nSystem will now reboot.\r\n");
         nrf_delay_ms(100);
@@ -127,27 +129,27 @@ printf("\n\
       }
 
       //check BLE MAC address
-      else if(cmd[0] == 'b' && cmd[1] == 'l' && cmd[2] == 'e' && cmd[3] == ' ' && cmd[4] == 'm' && cmd[5] == 'a' && cmd[6] == 'c')       
+      if(cmd[0] == 'b' && cmd[1] == 'l' && cmd[2] == 'e' && cmd[3] == ' ' && cmd[4] == 'm' && cmd[5] == 'a' && cmd[6] == 'c')       
       {
         continue;
       }
 
       //EEPROM read
-      else if(cmd[0] == 'e' && cmd[1] == 'e' && cmd[2] == 'p' && cmd[3] == 'r' && cmd[4] == 'o' && cmd[5] == 'm' && cmd[6] == ' ' && cmd[7] == 'r' && cmd[8] == 'e' && cmd[9] == 'a' && cmd[10] == 'd')       
+      if(cmd[0] == 'e' && cmd[1] == 'e' && cmd[2] == 'p' && cmd[3] == 'r' && cmd[4] == 'o' && cmd[5] == 'm' && cmd[6] == ' ' && cmd[7] == 'r' && cmd[8] == 'e' && cmd[9] == 'a' && cmd[10] == 'd')       
       {
         eeprom_cmd_read();
         continue;
       }
 
       //EEPROM write
-      else if(cmd[0] == 'e' && cmd[1] == 'e' && cmd[2] == 'p' && cmd[3] == 'r' && cmd[4] == 'o' && cmd[5] == 'm' && cmd[6] == ' ' && cmd[7] == 'w' && cmd[8] == 'r' && cmd[9] == 'i' && cmd[10] == 't' && cmd[11] == 'e')       
+      if(cmd[0] == 'e' && cmd[1] == 'e' && cmd[2] == 'p' && cmd[3] == 'r' && cmd[4] == 'o' && cmd[5] == 'm' && cmd[6] == ' ' && cmd[7] == 'w' && cmd[8] == 'r' && cmd[9] == 'i' && cmd[10] == 't' && cmd[11] == 'e')       
       {
         eeprom_cmd_write();
         continue;
       }
 
       //EEPROM erase all
-      else if(cmd[0] == 'e' && cmd[1] == 'e' && cmd[2] == 'p' && cmd[3] == 'r' && cmd[4] == 'o' && cmd[5] == 'm' && cmd[6] == ' ' && cmd[7] == 'e' && cmd[8] == 'r' && cmd[9] == 'a' && cmd[10] == 's' && cmd[11] == 'e')       
+      if(cmd[0] == 'e' && cmd[1] == 'e' && cmd[2] == 'p' && cmd[3] == 'r' && cmd[4] == 'o' && cmd[5] == 'm' && cmd[6] == ' ' && cmd[7] == 'e' && cmd[8] == 'r' && cmd[9] == 'a' && cmd[10] == 's' && cmd[11] == 'e')       
       {
         eeprom_eraseall();
         continue;
@@ -159,6 +161,7 @@ printf("\n\
         eeprom_dump();
         continue;
       }
+            
     } // while(true)
 }
 

@@ -4668,7 +4668,7 @@ LOAD linker stubs
  .comment       0x000000000000004c       0x4d _build/nrf52840_xxaa/UART.c.o
  .comment       0x000000000000004c       0x4d _build/nrf52840_xxaa/twi.c.o
 
-.debug_line     0x0000000000000000     0xeb94
+.debug_line     0x0000000000000000     0xeb8f
  .debug_line    0x0000000000000000       0x7e _build/nrf52840_xxaa/gcc_startup_nrf52840.S.o
  .debug_line    0x000000000000007e      0xfb8 _build/nrf52840_xxaa/boards.c.o
  .debug_line    0x0000000000001036      0x570 _build/nrf52840_xxaa/app_error.c.o
@@ -4684,9 +4684,9 @@ LOAD linker stubs
  .debug_line    0x0000000000008ae5     0x29a7 _build/nrf52840_xxaa/nrfx_twi.c.o
  .debug_line    0x000000000000b48c      0x90e _build/nrf52840_xxaa/system_nrf52840.c.o
  .debug_line    0x000000000000bd9a      0xaaf _build/nrf52840_xxaa/nrf_drv_twi.c.o
- .debug_line    0x000000000000c849      0xae3 _build/nrf52840_xxaa/main.c.o
- .debug_line    0x000000000000d32c      0x8b0 _build/nrf52840_xxaa/UART.c.o
- .debug_line    0x000000000000dbdc      0xfb8 _build/nrf52840_xxaa/twi.c.o
+ .debug_line    0x000000000000c849      0xade _build/nrf52840_xxaa/main.c.o
+ .debug_line    0x000000000000d327      0x8b0 _build/nrf52840_xxaa/UART.c.o
+ .debug_line    0x000000000000dbd7      0xfb8 _build/nrf52840_xxaa/twi.c.o
 
 .debug_info     0x0000000000000000    0x1fcdd
  .debug_info    0x0000000000000000       0x26 _build/nrf52840_xxaa/gcc_startup_nrf52840.S.o
