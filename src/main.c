@@ -75,11 +75,71 @@ printf("\n\
 ***********************************************************************\r\n");
     nrf_delay_ms(20);
     display_help();
+
     while(true)
     {
-        uart_checker();
-    }
+      uint8_t cr = '\0';
+      uint8_t cmd[16] = {'\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0'};
+      uint8_t i = 0;
+
+      while(app_uart_get(&cr) ==  NRF_SUCCESS)
+      {
+        cmd[i] = cr;
+        i++;
+        nrf_delay_ms(5);
+      }
+        if(cmd[0] == 'h' && cmd[1] == 'e')       //display help message
+        {
+          display_help();
+          nrf_delay_ms(10);
+
+          for(int j = 0; j < 16; j++)
+            cmd[j] = '\0';
+          continue;
+        }
+        if(cr == 's')       //scan for TWI(I2C) devices
+        {
+          twi_scan();
+        }
+        if(cr == 'c')       //toggle LEDs on
+        {
+          bsp_board_leds_on();
+          printf("\nToggled LEDs on.\r\n");
+        }
+        if(cr == 'v')       //toggle LEDs off
+        {
+          bsp_board_leds_off();
+          printf("\nToggled LEDs off.\r\n");
+        }
+        if(cr == 'r')       //reset the system
+        {
+          printf("\nSystem will now reboot.\r\n");
+          nrf_delay_ms(100);
+          NVIC_SystemReset();
+        }
+        if(cr == 'b')       //check BLE MAC address
+        {
+          ;
+        }
+        if(cr == 'o')       //EEPROM read
+        {
+          eeprom_cmd_read();
+        }
+        if(cr == 'x')       //EEPROM write
+        {
+          eeprom_cmd_write();
+        }
+        if(cr == 'z')       //EEPROM erase all
+        {
+          eeprom_eraseall();
+        }
+        if(cr == 'd')       //EEPROM memory dump
+        {
+          eeprom_dump();
+        }
+    }//while(true)
 }
+
 
 
 
