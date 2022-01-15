@@ -79,7 +79,7 @@ printf("\n\
     while(true)
     {
       uint8_t cr = '\0';
-      uint8_t cmd[16] = {'\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0'};
+      uint8_t cmd[32] = {'\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0'};
       uint8_t i = 0;
 
       //scan for user input
@@ -144,7 +144,24 @@ printf("\n\
       //EEPROM write
       if(cmd[0] == 'e' && cmd[1] == 'e' && cmd[2] == 'p' && cmd[3] == 'r' && cmd[4] == 'o' && cmd[5] == 'm' && cmd[6] == ' ' && cmd[7] == 'w' && cmd[8] == 'r' && cmd[9] == 'i' && cmd[10] == 't' && cmd[11] == 'e')       
       {
-        eeprom_cmd_write();
+        if(cmd[12] == ' ' && cmd[13] != '\0' && cmd[14] != '\0' && cmd[15] == ' ' && cmd[16] != '\0')
+        {
+            uint8_t pdata[16];
+            uint8_t count = 0;
+            for(uint8_t x = 16; x < 32; x++)
+            {
+                pdata[count] = cmd[x];
+                printf("%c", pdata[count]);
+                nrf_delay_ms(3);
+            }
+            uint8_t data[16] = {cmd[16], cmd[17], cmd[18], cmd[19], cmd[20], cmd[21], cmd[22], cmd[23], cmd[24], cmd[25], cmd[26], cmd[27], cmd[28], cmd[29], cmd[30], cmd[31]};
+            eeprom_cmd_write(1, data);
+        }
+
+        else
+        {
+           printf("INVALID SYNTAX\r\n");
+        }
         continue;
       }
 

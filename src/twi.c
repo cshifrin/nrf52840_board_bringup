@@ -189,16 +189,6 @@ void eeprom_dump(void)
         }
         nrf_delay_ms(5);
         printf("%s", buff);
-        
-        /*if(addr % 64 == 0)
-        {
-            printf("  (new page)\r\n");
-        }
-        else
-        {
-            printf("\n");
-        }*/
-
         printf("\r\n");
     }
 }
@@ -206,10 +196,10 @@ void eeprom_dump(void)
 /**
  * Set value in EEPROM.
  */
-void eeprom_cmd_write(void)
+void eeprom_cmd_write(uint16_t paddr, uint8_t * pdata)
 {
-    uint16_t addr = 0;
-    char data[16] = "christopherhenry";
+    uint16_t addr = paddr;
+    uint8_t * data = pdata;
 
     while(1)
     {
