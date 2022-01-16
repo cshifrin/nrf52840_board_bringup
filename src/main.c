@@ -151,12 +151,10 @@ printf("\n\
             char c2 = cmd[14];
             int i1 = c1 - '0';
             int i2 = c2 - '0';
-            int i3 = concatenate(i1, i2);
-            printf("%i\r\n", i1);
-            printf("%i\r\n", i2);
-            printf("%i\r\n", i3);
+            int addr = concatenate(i1, i2);
+            nrf_delay_ms(2);
             uint8_t data[16] = {cmd[16], cmd[17], cmd[18], cmd[19], cmd[20], cmd[21], cmd[22], cmd[23], cmd[24], cmd[25], cmd[26], cmd[27], cmd[28], cmd[29], cmd[30], cmd[31]};
-            //eeprom_cmd_write(addr, data);
+            eeprom_cmd_write(addr, data);
         }
 
         else
