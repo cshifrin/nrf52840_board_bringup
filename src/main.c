@@ -138,7 +138,21 @@ printf("\n\
       //EEPROM read
       if(cmd[0] == 'e' && cmd[1] == 'e' && cmd[2] == 'p' && cmd[3] == 'r' && cmd[4] == 'o' && cmd[5] == 'm' && cmd[6] == ' ' && cmd[7] == 'r' && cmd[8] == 'e' && cmd[9] == 'a' && cmd[10] == 'd')       
       {
-        eeprom_cmd_read();
+        if(cmd[11] == ' ' && cmd[12] != '\0' && cmd[13] != '\0')
+        {
+            char c1 = cmd[12];
+            char c2 = cmd[13];
+            int i1 = c1 - '0';
+            int i2 = c2 - '0';
+            int addr = concatenate(i1, i2); // convert the address parameter from the user into the corresponding location in memory
+            nrf_delay_ms(2);
+            eeprom_cmd_read(addr);
+        }
+        
+        else
+        {
+            printf("INVALID SYNTAX\r\n");
+        }
         continue;
       }
 

@@ -36,26 +36,41 @@ void init_uart_nRF_PC()
 /* Print a list of serial commands for the user. */
 void display_help(void)
 {
-  printf("  \n--------------------------------------\r\n");
-  printf("  |                HELP                |\r\n");
-  printf("  --------------------------------------\r\n");
-  printf("  | h  -  display this help message    |\r\n");
-  printf("  | s  -  scan for TWI (I2C) addresses |\r\n");
-  printf("  | c  -  toggle onboard LEDs on       |\r\n");
-  nrf_delay_ms(20); //delay so UART can keep up
-  printf("  | v  -  toggle onboard LEDs off      |\r\n");
-  printf("  | r  -  reboot the system            |\r\n");
-  printf("  | b  -  check BLE MAC address        |\r\n");
-  printf("  | o  -  read        (EEPROM)         |\r\n");
-  printf("  | p  -  write       (EEPROM)         |\r\n");
-  printf("  | d  -  memory dump (EEPROM)         |\r\n");
-  nrf_delay_ms(20); 
-  printf("  | e  -  erase all   (EEPROM)         |\r\n");
-  printf("  | x  -  tbd                          |\r\n");
-  printf("  | x  -  tbd                          |\r\n");
-  printf("  | x  -  tbd                          |\r\n");
-  printf("  | x  -  tbd                          |\r\n");
-  printf("  --------------------------------------\r\n");
+  printf("  \n------------------------------------------------------------\r\n");
+  nrf_delay_ms(5);
+  printf("  |    COMMAND    |               DESCRIPTION                |\r\n");
+  nrf_delay_ms(5);
+  printf("  ------------------------------------------------------------\r\n");
+  nrf_delay_ms(5);
+  printf("  |  help         |  display this help message               |\r\n");
+  nrf_delay_ms(5);
+  printf("  |  scan         |  scan for TWI (I2C) addresses            |\r\n");
+  nrf_delay_ms(5);
+  printf("  |  led on       |  toggle onboard LEDs on                  |\r\n");
+  nrf_delay_ms(5);
+  printf("  |  led off      |  toggle onboard LEDs off                 |\r\n");
+  nrf_delay_ms(5);
+  printf("  |  reboot       |  reboot the system                       |\r\n");
+  nrf_delay_ms(5);
+  printf("  |  ble mac      |  check BLE MAC address                   |\r\n");
+  nrf_delay_ms(5);
+  printf("  |  eeprom read  |  eeprom read 12 (read from addr 12)      |\r\n");
+  nrf_delay_ms(5);
+  printf("  |  eeprom write |  eeprom write 12 bob (write to addr 12)  |\r\n");
+  nrf_delay_ms(5);
+  printf("  |  eeprom dump  |  memory dump                             |\r\n");
+  nrf_delay_ms(5);
+  printf("  |  eeprom erase |  erase all                               |\r\n");
+  nrf_delay_ms(5);
+  printf("  |  x  -  tbd    |                                          |\r\n");
+  nrf_delay_ms(5);
+  printf("  |  x  -  tbd    |                                          |\r\n");
+  nrf_delay_ms(5);
+  printf("  |  x  -  tbd    |                                          |\r\n");
+  nrf_delay_ms(5);
+  printf("  |  x  -  tbd    |                                          |\r\n");
+  nrf_delay_ms(5);
+  printf("  ------------------------------------------------------------\r\n");
 }
 
 

@@ -43,7 +43,7 @@ void eeprom_eraseall(void);														// Erase EEPROM completely.
 void eeprom_print_hex(uint8_t data);											// Print the data value in HEX.
 void eeprom_print_addr(size_t addr);											// Print the address in HEX.
 void eeprom_cmd_write(uint16_t paddr, uint8_t * pdata);							// Set values in EEPROM.
-void eeprom_cmd_read(void);								 						// Get vallues in EEPROM.
+void eeprom_cmd_read(uint16_t paddr);					 						// Get vallues in EEPROM.
 
 
 

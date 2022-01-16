@@ -178,7 +178,7 @@ void eeprom_dump(void)
             return;
         }
 
-        printf("[%.2i]   0x%.2X: ", addr, addr);
+        printf(" [%.2i]   0x%.2X: ", addr, addr);
         for (uint8_t i = 0; i < IN_LINE_PRINT_CNT; i++)
         {
             printf("%.2x ", buff[i]);
@@ -221,10 +221,10 @@ void eeprom_cmd_write(uint16_t paddr, uint8_t * pdata)
 /**
  * Get value in EEPROM.
  */
-void eeprom_cmd_read(void)
+void eeprom_cmd_read(uint16_t paddr)
 {
     ret_code_t err_code;
-    uint16_t addr = 0;
+    uint16_t addr = paddr;
     uint8_t buff[IN_LINE_PRINT_CNT];
 
     err_code = eeprom_read(addr, buff, IN_LINE_PRINT_CNT);
