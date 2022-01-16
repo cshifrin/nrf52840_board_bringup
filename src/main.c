@@ -178,6 +178,28 @@ printf("\n\
         continue;
       }
 
+      //EEPROM delete
+      if(cmd[0] == 'e' && cmd[1] == 'e' && cmd[2] == 'p' && cmd[3] == 'r' && cmd[4] == 'o' && cmd[5] == 'm' && cmd[6] == ' ' && cmd[7] == 'd' && cmd[8] == 'e' && cmd[9] == 'l' && cmd[10] == 'e' && cmd[11] == 't' && cmd[12] == 'e')       
+      {
+        if(cmd[13] == ' ' && cmd[14] != '\0' && cmd[15] != '\0')
+        {
+            char c1 = cmd[14];
+            char c2 = cmd[15];
+            int i1 = c1 - '0';
+            int i2 = c2 - '0';
+            int addr = concatenate(i1, i2); // convert the address parameter from the user into the corresponding location in memory
+            nrf_delay_ms(2);
+            uint8_t data[16] = {cmd[16], cmd[17], cmd[18], cmd[19], cmd[20], cmd[21], cmd[22], cmd[23], cmd[24], cmd[25], cmd[26], cmd[27], cmd[28], cmd[29], cmd[30], cmd[31]};
+            eeprom_cmd_delete(addr);
+        }
+
+        else
+        {
+           printf("INVALID SYNTAX\r\n");
+        }
+        continue;
+      }
+
       //EEPROM erase all
       if(cmd[0] == 'e' && cmd[1] == 'e' && cmd[2] == 'p' && cmd[3] == 'r' && cmd[4] == 'o' && cmd[5] == 'm' && cmd[6] == ' ' && cmd[7] == 'e' && cmd[8] == 'r' && cmd[9] == 'a' && cmd[10] == 's' && cmd[11] == 'e')       
       {
@@ -194,15 +216,6 @@ printf("\n\
             
     } // while(true)
 }
-
-int concatenate(int x, int y)
-{
-    unsigned pow = 10;
-    while(y >= pow)
-        pow *= 10;
-    return x * pow + y;
-}
-
 
 
 

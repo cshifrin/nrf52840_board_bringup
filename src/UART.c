@@ -36,42 +36,54 @@ void init_uart_nRF_PC()
 /* Print a list of serial commands for the user. */
 void display_help(void)
 {
-  printf("  \n------------------------------------------------------------\r\n");
+  printf("  \n-------------------------------------------------------------\r\n");
   nrf_delay_ms(5);
-  printf("  |    COMMAND    |               DESCRIPTION                |\r\n");
+  printf("  |    COMMAND     |               DESCRIPTION                |\r\n");
   nrf_delay_ms(5);
-  printf("  ------------------------------------------------------------\r\n");
+  printf("  -------------------------------------------------------------\r\n");
   nrf_delay_ms(5);
-  printf("  |  help         |  display this help message               |\r\n");
+  printf("  |  help          |  display this help message               |\r\n");
   nrf_delay_ms(5);
-  printf("  |  scan         |  scan for TWI (I2C) addresses            |\r\n");
+  printf("  |  scan          |  scan for TWI (I2C) addresses            |\r\n");
   nrf_delay_ms(5);
-  printf("  |  led on       |  toggle onboard LEDs on                  |\r\n");
+  printf("  |  led on        |  toggle onboard LEDs on                  |\r\n");
   nrf_delay_ms(5);
-  printf("  |  led off      |  toggle onboard LEDs off                 |\r\n");
+  printf("  |  led off       |  toggle onboard LEDs off                 |\r\n");
   nrf_delay_ms(5);
-  printf("  |  reboot       |  reboot the system                       |\r\n");
+  printf("  |  reboot        |  reboot the system                       |\r\n");
   nrf_delay_ms(5);
-  printf("  |  ble mac      |  check BLE MAC address                   |\r\n");
+  printf("  |  ble mac       |  check BLE MAC address                   |\r\n");
   nrf_delay_ms(5);
-  printf("  |  eeprom read  |  eeprom read 12 (read from addr 12)      |\r\n");
+  printf("  |  eeprom read   |  eeprom read 12 (read from addr 12)      |\r\n");
   nrf_delay_ms(5);
-  printf("  |  eeprom write |  eeprom write 12 bob (write to addr 12)  |\r\n");
+  printf("  |  eeprom write  |  eeprom write 12 bob (write to addr 12)  |\r\n");
   nrf_delay_ms(5);
-  printf("  |  eeprom dump  |  memory dump                             |\r\n");
+  printf("  |  eeprom dump   |  memory dump                             |\r\n");
   nrf_delay_ms(5);
-  printf("  |  eeprom erase |  erase all                               |\r\n");
+  printf("  |  eeprom delete |  delete entry                            |\r\n");
   nrf_delay_ms(5);
-  printf("  |  x  -  tbd    |                                          |\r\n");
+  printf("  |  eeprom erase  |  erase all                               |\r\n");
   nrf_delay_ms(5);
-  printf("  |  x  -  tbd    |                                          |\r\n");
+  printf("  |  x  -  tbd     |                                          |\r\n");
   nrf_delay_ms(5);
-  printf("  |  x  -  tbd    |                                          |\r\n");
+  printf("  |  x  -  tbd     |                                          |\r\n");
   nrf_delay_ms(5);
-  printf("  |  x  -  tbd    |                                          |\r\n");
+  printf("  |  x  -  tbd     |                                          |\r\n");
   nrf_delay_ms(5);
-  printf("  ------------------------------------------------------------\r\n");
+  printf("  -------------------------------------------------------------\r\n");
 }
+
+/**
+ * Concatenate two integers to be used as an address.
+ */
+int concatenate(int x, int y)
+{
+    unsigned pow = 10;
+    while(y >= pow)
+        pow *= 10;
+    return x * pow + y;
+}
+
 
 
 

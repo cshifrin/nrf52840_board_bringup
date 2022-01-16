@@ -252,6 +252,22 @@ void eeprom_cmd_read(uint16_t paddr)
 }
 
 
+/**
+ * Delete value in EEPROM.
+ */
+void eeprom_cmd_delete(uint16_t paddr)
+{
+    uint16_t addr = paddr;
+    uint8_t clear_val = 0xff;
+    
+    eeprom_write(addr, &clear_val, 16);
+    nrf_delay_ms(5);
+
+    printf("EEPROM entry deleted.\r\n");
+}
+
+
+
 
 
 
