@@ -178,7 +178,7 @@ void eeprom_dump(void)
             return;
         }
 
-        printf("0x%.2X: ", addr);
+        printf("[%.2i]   0x%.2X: ", addr, addr);
         for (uint8_t i = 0; i < IN_LINE_PRINT_CNT; i++)
         {
             printf("%.2x ", buff[i]);

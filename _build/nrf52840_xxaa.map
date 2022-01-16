@@ -4261,15 +4261,15 @@ Linker script and memory map
                 0x000000000000400c       0x4e _build/nrf52840_xxaa/twi.c.o
  *fill*         0x000000000000405a        0x2 
  .rodata.eeprom_dump.str1.4
-                0x000000000000405c       0x5f _build/nrf52840_xxaa/twi.c.o
-                                         0x63 (size before relaxing)
- *fill*         0x00000000000040bb        0x1 
+                0x000000000000405c       0x67 _build/nrf52840_xxaa/twi.c.o
+                                         0x6b (size before relaxing)
+ *fill*         0x00000000000040c3        0x1 
  .rodata.eeprom_cmd_write.str1.4
-                0x00000000000040bc       0x3b _build/nrf52840_xxaa/twi.c.o
- *fill*         0x00000000000040f7        0x1 
+                0x00000000000040c4       0x3b _build/nrf52840_xxaa/twi.c.o
+ *fill*         0x00000000000040ff        0x1 
  .rodata.eeprom_cmd_read.str1.4
-                0x00000000000040f8        0xf _build/nrf52840_xxaa/twi.c.o
- *fill*         0x0000000000004107        0x9 
+                0x0000000000004100        0xf _build/nrf52840_xxaa/twi.c.o
+ *fill*         0x000000000000410f        0x1 
  .rodata.delay_machine_code.8768
                 0x0000000000004110        0x6 _build/nrf52840_xxaa/twi.c.o
  *fill*         0x0000000000004116        0x2 
@@ -4698,7 +4698,7 @@ LOAD linker stubs
  .debug_line    0x000000000000d427      0x8b0 _build/nrf52840_xxaa/UART.c.o
  .debug_line    0x000000000000dcd7      0xfb2 _build/nrf52840_xxaa/twi.c.o
 
-.debug_info     0x0000000000000000    0x1fe51
+.debug_info     0x0000000000000000    0x1fe57
  .debug_info    0x0000000000000000       0x26 _build/nrf52840_xxaa/gcc_startup_nrf52840.S.o
  .debug_info    0x0000000000000026     0x1811 _build/nrf52840_xxaa/boards.c.o
  .debug_info    0x0000000000001837      0xb94 _build/nrf52840_xxaa/app_error.c.o
@@ -4716,7 +4716,7 @@ LOAD linker stubs
  .debug_info    0x00000000000194e8     0x1bb2 _build/nrf52840_xxaa/nrf_drv_twi.c.o
  .debug_info    0x000000000001b09a     0x1574 _build/nrf52840_xxaa/main.c.o
  .debug_info    0x000000000001c60e     0x1502 _build/nrf52840_xxaa/UART.c.o
- .debug_info    0x000000000001db10     0x2341 _build/nrf52840_xxaa/twi.c.o
+ .debug_info    0x000000000001db10     0x2347 _build/nrf52840_xxaa/twi.c.o
 
 .debug_abbrev   0x0000000000000000     0x41af
  .debug_abbrev  0x0000000000000000       0x14 _build/nrf52840_xxaa/gcc_startup_nrf52840.S.o
