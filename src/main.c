@@ -50,6 +50,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <string.h>
 #include "app_uart.h"
 #include "app_error.h"
 #include "nrf_delay.h"
@@ -146,8 +147,16 @@ printf("\n\
       {
         if(cmd[12] == ' ' && cmd[13] != '\0' && cmd[14] != '\0' && cmd[15] == ' ' && cmd[16] != '\0')
         {
+            char c1 = cmd[13];
+            char c2 = cmd[14];
+            int i1 = c1 - '0';
+            int i2 = c2 - '0';
+            int i3 = concatenate(i1, i2);
+            printf("%i\r\n", i1);
+            printf("%i\r\n", i2);
+            printf("%i\r\n", i3);
             uint8_t data[16] = {cmd[16], cmd[17], cmd[18], cmd[19], cmd[20], cmd[21], cmd[22], cmd[23], cmd[24], cmd[25], cmd[26], cmd[27], cmd[28], cmd[29], cmd[30], cmd[31]};
-            eeprom_cmd_write(5, data);
+            //eeprom_cmd_write(addr, data);
         }
 
         else
@@ -172,6 +181,14 @@ printf("\n\
       }
             
     } // while(true)
+}
+
+int concatenate(int x, int y)
+{
+    unsigned pow = 10;
+    while(y >= pow)
+        pow *= 10;
+    return x * pow + y;
 }
 
 

@@ -24,6 +24,8 @@ _build/nrf52840_xxaa/main.c.o: src/main.c \
  /usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/_pthreadtypes.h \
  /usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/machine/types.h \
  /usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/stdio.h \
+ /usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/string.h \
+ /usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/string.h \
  nrfSDK/components/libraries/uart/app_uart.h \
  nrfSDK/components/libraries/util/app_util_platform.h \
  nrfSDK/modules/nrfx/mdk/compiler_abstraction.h \
@@ -119,6 +121,10 @@ _build/nrf52840_xxaa/main.c.o: src/main.c \
 /usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/machine/types.h:
 
 /usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/stdio.h:
+
+/usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/string.h:
+
+/usr/local/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/string.h:
 
 nrfSDK/components/libraries/uart/app_uart.h:
 
