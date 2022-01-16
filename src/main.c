@@ -188,8 +188,6 @@ printf("\n\
             int i1 = c1 - '0';
             int i2 = c2 - '0';
             int addr = concatenate(i1, i2); // convert the address parameter from the user into the corresponding location in memory
-            nrf_delay_ms(2);
-            uint8_t data[16] = {cmd[16], cmd[17], cmd[18], cmd[19], cmd[20], cmd[21], cmd[22], cmd[23], cmd[24], cmd[25], cmd[26], cmd[27], cmd[28], cmd[29], cmd[30], cmd[31]};
             eeprom_cmd_delete(addr);
         }
 

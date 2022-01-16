@@ -259,9 +259,8 @@ void eeprom_cmd_delete(uint16_t paddr)
 {
     uint16_t addr = paddr;
     uint8_t clear_val = 0xff;
-    
-    eeprom_write(addr, &clear_val, 16);
-    nrf_delay_ms(5);
+    uint8_t data[16] = {clear_val, clear_val, clear_val, clear_val, clear_val, clear_val, clear_val, clear_val, clear_val, clear_val, clear_val, clear_val, clear_val, clear_val, clear_val, clear_val};
+    eeprom_write(addr, data, 16);
 
     printf("EEPROM entry deleted.\r\n");
 }
