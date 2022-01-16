@@ -58,9 +58,9 @@ void display_help(void)
   nrf_delay_ms(5);
   printf("  |  eeprom write  |  eeprom write 12 bob (write to addr 12)  |\r\n");
   nrf_delay_ms(5);
-  printf("  |  eeprom dump   |  memory dump                             |\r\n");
+  printf("  |  eeprom delete |  eeprom delete 12 (delete entry 12)      |\r\n");
   nrf_delay_ms(5);
-  printf("  |  eeprom delete |  delete entry                            |\r\n");
+  printf("  |  eeprom dump   |  memory dump                             |\r\n");
   nrf_delay_ms(5);
   printf("  |  eeprom erase  |  erase all                               |\r\n");
   nrf_delay_ms(5);
